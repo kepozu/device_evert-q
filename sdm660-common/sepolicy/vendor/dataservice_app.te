@@ -1,0 +1,5 @@
+#============= dataservice_app ==============
+allow dataservice_app bg_boot_complete_prop:file read;
+allow dataservice_app bg_daemon_prop:file read;
+allow dataservice_app boottime_prop:file read;
+allow dataservice_app theme_data_file:dir search;

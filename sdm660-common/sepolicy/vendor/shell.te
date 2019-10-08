@@ -1,0 +1,32 @@
+#============= shell ==============
+allow shell runtime_event_log_tags_file:file read;
+#============= shell ==============
+allow shell bg_boot_complete_prop:file { getattr open read };
+allow shell bg_daemon_prop:file { open read getattr};
+allow shell runtime_event_log_tags_file:file open;
+allow shell boottime_prop:file { getattr open };
+allow shell cnd_vendor_prop:file open;
+allow shell cnd_vendor_prop:file getattr;
+allow shell console_silent_prop:file { getattr open };
+allow shell ctl_LKCore_prop:file { getattr open };
+allow shell ctl_atfwd_prop:file { getattr open };
+allow shell ctl_bootanim_prop:file { getattr open };
+allow shell ctl_console_prop:file { getattr open };
+allow shell ctl_default_prop:file { getattr open };
+allow shell ctl_fuse_prop:file open;
+allow shell ctl_fuse_prop:file getattr;
+allow shell ctl_interface_restart_prop:file { getattr open };
+allow shell ctl_interface_start_prop:file { getattr open };
+allow shell ctl_interface_stop_prop:file { getattr open };
+allow shell ctl_mdnsd_prop:file open;
+allow shell cnd_vendor_prop:file read;
+allow shell ctl_mdnsd_prop:file getattr;
+allow shell ctl_qcrild_prop:file { getattr open };
+allow shell ctl_restart_prop:file { getattr open };
+allow shell ctl_rildaemon_prop:file { getattr open };
+allow shell ctl_sigstop_prop:file open;
+allow shell ctl_sigstop_prop:file getattr;
+allow shell ctl_start_prop:file { getattr open };
+allow shell ctl_stop_prop:file { getattr open };
+allow shell ctl_vendor_hbtp_prop:file { getattr open };
+allow shell ctl_vendor_imsrcsservice_prop:file { getattr open };

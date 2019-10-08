@@ -1,0 +1,4 @@
+#============= shared_relro ==============
+allow shared_relro bg_boot_complete_prop:file read;
+allow shared_relro bg_daemon_prop:file read;
+allow shared_relro boottime_prop:file read;

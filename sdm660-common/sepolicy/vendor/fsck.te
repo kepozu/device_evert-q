@@ -1,0 +1,3 @@
+#============= fsck ==============
+allow fsck rootfs:blk_file getattr;
+allow fsck media_rw_data_file:dir getattr;
