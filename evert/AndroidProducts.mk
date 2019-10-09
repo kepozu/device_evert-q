@@ -15,9 +15,11 @@
 #
 
 PRODUCT_MAKEFILES := \
-    $(LOCAL_DIR)/aosip_evert.mk
+    $(LOCAL_DIR)/aosp_evert.mk \
+    $(LOCAL_DIR)/aosip_evert.mk \
 
 COMMON_LUNCH_CHOICES := \
-    aosip_evert-user \
+    aosp_evert-userdebug \
+    aosp_evert-eng \
     aosip_evert-userdebug \
     aosip_evert-eng \

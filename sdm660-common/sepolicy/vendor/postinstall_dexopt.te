@@ -1,2 +1,0 @@
-#============= postinstall dexopt ==============
-allow postinstall_dexopt dex2oat:process noatsecure;

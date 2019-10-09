@@ -1,4 +1,0 @@
-#============= toolbox ==============
-allow toolbox init:fifo_file { write getattr };
-allow toolbox init:unix_stream_socket connectto;
-allow toolbox property_socket:sock_file write;
