@@ -33,14 +33,14 @@ TARGET_ARCH := arm64
 TARGET_ARCH_VARIANT := armv8-a
 TARGET_CPU_ABI := arm64-v8a
 TARGET_CPU_ABI2 :=
-TARGET_CPU_VARIANT := kryo
+TARGET_CPU_VARIANT := generic
 TARGET_CPU_SMP := true
 
 TARGET_2ND_ARCH := arm
 TARGET_2ND_ARCH_VARIANT := armv8-a
 TARGET_2ND_CPU_ABI := armeabi-v7a
 TARGET_2ND_CPU_ABI2 := armeabi
-TARGET_2ND_CPU_VARIANT := cortex-a53
+TARGET_2ND_CPU_VARIANT := cortex-a73
 ARCH_ARM_HAVE_TLS_REGISTER := true
 
 BOARD_USES_QCOM_HARDWARE := true
@@ -124,6 +124,7 @@ TARGET_USES_QTI_CAMERA_DEVICE := true
 
 # Charger
 BOARD_CHARGER_ENABLE_SUSPEND := true
+WITH_LINEAGE_CHARGER := false
 
 # Display
 MAX_EGL_CACHE_KEY_SIZE := 12*1024
@@ -158,7 +159,6 @@ USE_DEVICE_SPECIFIC_GPS := true
 
 # HIDL
 DEVICE_MANIFEST_FILE := $(PLATFORM_PATH)/manifest.xml
-DEVICE_MANIFEST_FILE += $(PLATFORM_PATH)/keymaster_3.xml
 DEVICE_MATRIX_FILE := $(PLATFORM_PATH)/compatibility_matrix.xml
 TARGET_FS_CONFIG_GEN += \
     $(PLATFORM_PATH)/config.fs \
@@ -209,7 +209,7 @@ CUSTOM_APNS_FILE := $(PLATFORM_PATH)/configs/sprint_apns.xml
 
 # Root
 BOARD_ROOT_EXTRA_SYMLINKS := \
-    /mnt/vendor/persist:/persist
+    /mnt/vendor/persist:/persist \
 
 # Vendor Security Patch Level
 VENDOR_SECURITY_PATCH := 2019-10-05
@@ -218,10 +218,22 @@ VENDOR_SECURITY_PATCH := 2019-10-05
 # include device/qcom/sepolicy/sepolicy.mk
 # BOARD_SEPOLICY_DIRS += $(PLATFORM_PATH)/sepolicy/vendor
 # BOARD_PLAT_PRIVATE_SEPOLICY_DIR += $(PLATFORM_PATH)/sepolicy/private
+
+#BOARD_PLAT_PRIVATE_SEPOLICY_DIR += \
+    device/qcom/sepolicy/generic/private \
+    device/qcom/sepolicy/qva/private
+
+#BOARD_PLAT_PUBLIC_SEPOLICY_DIR += \
+    device/qcom/sepolicy/generic/public \
+    device/qcom/sepolicy/qva/public
+
 BOARD_SEPOLICY_DIRS += $(PLATFORM_PATH)/sepolicy_base
 
 # Timeservice
 BOARD_USES_QC_TIME_SERVICES := true
+
+# UI
+#sys.use_fifo_ui=1
 
 # Treble
 BOARD_PROPERTY_OVERRIDES_SPLIT_ENABLED := true

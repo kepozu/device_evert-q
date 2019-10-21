@@ -19,8 +19,6 @@ PRODUCT_PROPERTY_OVERRIDES += \
     ro.vendor.audio.sdk.ssr=false \
     ro.vendor.audio.sdk.fluencetype=none \
     ro.qc.sdk.audio.fluencetype=none \
-    ro.config.media_vol_steps=25 \
-    ro.config.vc_call_vol_steps=15 \
     ro.qc.sdk.audio.ssr=false \
     vendor.audio_hal.period_size=240 \
     vendor.audio.dolby.ds2.enabled=false \
@@ -203,6 +201,10 @@ PRODUCT_PROPERTY_OVERRIDES += \
 # Wifi
 PRODUCT_PROPERTY_OVERRIDES += \
     wifi.interface=wlan0
+
+# SurfaceFlinger
+PRODUCT_DEFAULT_PROPERTY_OVERRIDES += \
+    ro.surface_flinger.protected_contents=true
 
 # NavBar
 PRODUCT_PROPERTY_OVERRIDES += \

@@ -16,11 +16,10 @@
 
 # Inherit some common Lineage stuff.
 $(call inherit-product, $(SRC_TARGET_DIR)/product/core_64_bit.mk)
-$(call inherit-product, vendor/aosip/config/common.mk)
+$(call inherit-product, vendor/aosip/config/common_full_phone.mk)
 
 $(call inherit-product, $(SRC_TARGET_DIR)/product/full_base_telephony.mk)
 $(call inherit-product, $(SRC_TARGET_DIR)/product/languages_full.mk)
-
 $(call inherit-product, $(SRC_TARGET_DIR)/product/product_launched_with_o.mk)
 
 # Device
@@ -28,9 +27,6 @@ $(call inherit-product, device/motorola/evert/device.mk)
 
 # A/B updater
 AB_OTA_UPDATER := true
-
-TARGET_BOOT_ANIMATION_RES := 1080
-TARGET_GAPPS_ARCH := arm64
 
 AB_OTA_PARTITIONS += \
     boot \
@@ -56,8 +52,9 @@ PRODUCT_PACKAGES_DEBUG += \
 
 # Boot control HAL
 PRODUCT_PACKAGES += \
+    android.hardware.boot@1.0-impl.recovery \
     bootctrl.sdm660 \
-    bootctrl.sdm660.recovery \
+    bootctrl.sdm660.recovery
 
 # TWRP
 ifeq ($(WITH_TWRP),true)
@@ -70,11 +67,11 @@ endif
 PRODUCT_DEVICE := evert
 PRODUCT_NAME := aosip_evert
 PRODUCT_BRAND := motorola
-PRODUCT_MODEL := Moto G6 Plus
+PRODUCT_MODEL := Moto G(6) Plus
 PRODUCT_MANUFACTURER := Motorola
 PRODUCT_RELEASE_NAME := evert
 
 PRODUCT_BUILD_PROP_OVERRIDES += \
     PRODUCT_NAME=evert
 
-BUILD_FINGERPRINT := motorola/evert/evert:8.0.0/OPW27.113-45/53:user/release-keys
+BUILD_FINGERPRINT := motorola/evert/evert:9/PPWS29.116-11-6/9c4de2:user/release-keys
