@@ -26,6 +26,8 @@ PLATFORM_PATH := device/motorola/sdm660-common
 
 TARGET_SPECIFIC_HEADER_PATH := $(PLATFORM_PATH)/include
 
+SELINUX_IGNORE_NEVERALLOWS := true
+
 BOARD_VENDOR := motorola
 
 # Platform
