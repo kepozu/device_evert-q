@@ -159,6 +159,11 @@ USE_DEVICE_SPECIFIC_GPS := true
 
 # HIDL
 DEVICE_MANIFEST_FILE := $(PLATFORM_PATH)/manifest.xml
+ifdef BOARD_USES_KEYMASTER_4
+    DEVICE_MANIFEST_FILE += $(PLATFORM_PATH)/keymaster_4.xml
+else
+    DEVICE_MANIFEST_FILE += $(PLATFORM_PATH)/keymaster_3.xml
+endif
 DEVICE_MATRIX_FILE := $(PLATFORM_PATH)/compatibility_matrix.xml
 TARGET_FS_CONFIG_GEN += \
     $(PLATFORM_PATH)/config.fs \
@@ -209,7 +214,7 @@ CUSTOM_APNS_FILE := $(PLATFORM_PATH)/configs/sprint_apns.xml
 
 # Root
 BOARD_ROOT_EXTRA_SYMLINKS := \
-    /mnt/vendor/persist:/persist \
+    /mnt/vendor/persist:/persist
 
 # Vendor Security Patch Level
 VENDOR_SECURITY_PATCH := 2019-10-05
@@ -218,22 +223,10 @@ VENDOR_SECURITY_PATCH := 2019-10-05
 # include device/qcom/sepolicy/sepolicy.mk
 # BOARD_SEPOLICY_DIRS += $(PLATFORM_PATH)/sepolicy/vendor
 # BOARD_PLAT_PRIVATE_SEPOLICY_DIR += $(PLATFORM_PATH)/sepolicy/private
-
-#BOARD_PLAT_PRIVATE_SEPOLICY_DIR += \
-    device/qcom/sepolicy/generic/private \
-    device/qcom/sepolicy/qva/private
-
-#BOARD_PLAT_PUBLIC_SEPOLICY_DIR += \
-    device/qcom/sepolicy/generic/public \
-    device/qcom/sepolicy/qva/public
-
 BOARD_SEPOLICY_DIRS += $(PLATFORM_PATH)/sepolicy_base
 
 # Timeservice
 BOARD_USES_QC_TIME_SERVICES := true
-
-# UI
-#sys.use_fifo_ui=1
 
 # Treble
 BOARD_PROPERTY_OVERRIDES_SPLIT_ENABLED := true
@@ -257,7 +250,4 @@ WIFI_DRIVER_FW_PATH_STA := "sta"
 WIFI_DRIVER_FW_PATH_AP  := "ap"
 WIFI_DRIVER_FW_PATH_P2P := "p2p"
 WIFI_DRIVER_OPERSTATE_PATH := "/sys/class/net/wlan0/operstate"
-WIFI_DRIVER_STATE_CTRL_PARAM := "/sys/kernel/boot_wlan/boot_wlan"
-WIFI_DRIVER_STATE_ON := 1
-WIFI_DRIVER_STATE_OFF := 0
 PRODUCT_VENDOR_MOVE_ENABLED := true

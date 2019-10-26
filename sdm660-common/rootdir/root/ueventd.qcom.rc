@@ -487,6 +487,3 @@ firmware_directories /vendor/firmware_mnt/image/
 /sys/class/leds/vibrator activate     0660    system    system
 /sys/class/leds/vibrator extra        0660    system    system
 /sys/class/leds/vibrator seq          0660    system    system
-
-#Memory Offline
-/sys/devices/system/memory/memory* state    0660 system system

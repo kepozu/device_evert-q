@@ -202,10 +202,6 @@ PRODUCT_PROPERTY_OVERRIDES += \
 PRODUCT_PROPERTY_OVERRIDES += \
     wifi.interface=wlan0
 
-# SurfaceFlinger
-PRODUCT_DEFAULT_PROPERTY_OVERRIDES += \
-    ro.surface_flinger.protected_contents=true
-
 # NavBar
 PRODUCT_PROPERTY_OVERRIDES += \
     qemu.hw.mainkeys=0
