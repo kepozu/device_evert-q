@@ -16,3 +16,8 @@
 
 PRODUCT_MAKEFILES := \
     $(LOCAL_DIR)/havoc_evert.mk
+
+COMMON_LUNCH_CHOICES := \
+    havoc_evert-eng \
+    havoc_evert-user \
+    havoc_evert-userdebug
