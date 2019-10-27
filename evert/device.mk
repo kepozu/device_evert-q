@@ -59,7 +59,8 @@ PRODUCT_BOOT_JARS += qcom.fmradio
 
 # Init
 PRODUCT_PACKAGES += \
-    init.evert.rc
+    init.evert.rc \
+    init.mmi.acdb.sh
 
 # Lineage hardware
 PRODUCT_PACKAGES += \
