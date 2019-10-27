@@ -91,7 +91,8 @@ PRODUCT_COPY_FILES += \
 
 # Shims
 PRODUCT_PACKAGES += \
-    libgpu_mapper_shim
+    libgpu_mapper_shim \
+    libcamera_sdm660_shim
 
 # Soong namespaces
 PRODUCT_SOONG_NAMESPACES += \
