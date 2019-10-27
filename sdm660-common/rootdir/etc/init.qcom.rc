@@ -205,6 +205,10 @@ on early-boot
     chmod 0664 /mnt/vendor/persist/sensors/sensors_settings
 
 on boot
+    # Wifi driver state control
+    chown wifi wifi /sys/kernel/boot_wlan/boot_wlan
+    # Wifi firmware reload path
+    chown wifi wifi /sys/module/wlan/parameters/fwpath
     chown bluetooth bluetooth /sys/module/bluetooth_power/parameters/power
     chown bluetooth net_bt /sys/class/rfkill/rfkill0/type
     chown bluetooth net_bt /sys/class/rfkill/rfkill0/state
