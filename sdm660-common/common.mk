@@ -278,7 +278,7 @@ PRODUCT_PACKAGES += \
     libOmxVidcCommon \
     libstagefrighthw \
     libmm-omxcore \
-    libnl
+    libnl \
     libc2dcolorconvert \
     libextmedia_jni \
     libOmxAacEnc \
