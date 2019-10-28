@@ -44,12 +44,3 @@ sed -i "s/input/uhid input/" "$FP_SERVICE_RC"
 # Load libmot_gpu_mapper shim
 MOT_GPU_MAPPER="$BLOB_ROOT"/vendor/lib/libmot_gpu_mapper.so
 patchelf --add-needed libgpu_mapper_shim.so "$MOT_GPU_MAPPER"
-
-function blob_fixup() {
-    case "${1}" in
-    
-vendor/lib/hw/camera.sdm660.so)
-    patchelf --add-needed libcamera_sdm660_shim.so "${2}"
-        ;;
-    esac
-}
