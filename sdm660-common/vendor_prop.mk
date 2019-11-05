@@ -180,6 +180,11 @@ PRODUCT_PROPERTY_OVERRIDES += \
 	dalvik.vm.boot-dex2oat-threads=8 \
 	dalvik.vm.dex2oat-threads=8
 
+# Dirty ratios
+PRODUCT_PROPERTY_OVERRIDES += \
+	vm.dirty_ratio=5 \
+	vm.dirty_background_ratio=1
+
 # Media
 PRODUCT_PROPERTY_OVERRIDES += \
     media.stagefright.enable-player=true \
@@ -237,7 +242,7 @@ PRODUCT_PROPERTY_OVERRIDES += \
     dev.pm.dyn_samplingrate=1 \
     ro.opengles.version=196610 \
     debug.cpurend.vsync=false \
-    ro.qualcomm.cabl=0
+    ro.qualcomm.cabl=0 \
 
 # Factory reset partition
 PRODUCT_PROPERTY_OVERRIDES += \
@@ -361,3 +366,7 @@ PRODUCT_PROPERTY_OVERRIDES += \
 # Wifi
 PRODUCT_PROPERTY_OVERRIDES += \
     wifi.interface=wlan0
+
+# OEM Unlock reporting
+PRODUCT_DEFAULT_PROPERTY_OVERRIDES += \
+    ro.oem_unlock_supported=1

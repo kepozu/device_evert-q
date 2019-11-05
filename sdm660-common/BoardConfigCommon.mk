@@ -26,6 +26,9 @@ COMMON_PATH := device/motorola/sdm660-common
 
 TARGET_SPECIFIC_HEADER_PATH := $(COMMON_PATH)/include
 
+# HWUI
+HWUI_COMPILE_FOR_PERF := true
+
 BOARD_VENDOR := motorola
 
 # Platform
