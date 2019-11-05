@@ -4,46 +4,201 @@
 
 # Audio
 PRODUCT_PROPERTY_OVERRIDES += \
-    af.fast_track_multiplier=1 \
-    audio.deep_buffer.media=true \
-    audio.offload.disable=false \
-    audio.offload.video=false \
-    persist.audio.dualmic.config=endfire \
-    persist.vendor.audio.fluence.audiorec=false \
-    persist.vendor.audio.fluence.speaker=false \
-    persist.vendor.audio.fluence.voicecall=false \
-    persist.vendor.audio.fluence.voicecomm=false \
-    persist.vendor.audio.fluence.voicerec=false \
-    persist.vendor.audio.hw.binder.size_kbyte=1024 \
-    persist.vendor.audio.ras.enabled=false \
-    ro.vendor.audio.sdk.ssr=false \
-    ro.vendor.audio.sdk.fluencetype=none \
-    ro.qc.sdk.audio.fluencetype=none \
-    ro.qc.sdk.audio.ssr=false \
-    vendor.audio_hal.period_size=240 \
-    vendor.audio.dolby.ds2.enabled=false \
-    vendor.audio.dolby.ds2.hardbypass=false \
-    vendor.audio.flac.sw.decoder.24bit=true \
-    vendor.audio.hw.aac.encoder=true \
-    vendor.audio.noisy.broadcast.delay=600 \
-    vendor.audio.offload.buffer.size.kb=64 \
-    vendor.audio.offload.gapless.enabled=false \
-    vendor.audio.offload.multiaac.enable=true \
-    vendor.audio.offload.multiple.enabled=false \
-    vendor.audio.offload.passthrough=false \
-    vendor.audio.offload.pcm.16bit.enable=false \
-    vendor.audio.offload.pcm.24bit.enable=false \
-    vendor.audio.offload.pstimeout.secs=3 \
-    vendor.audio.offload.track.enable=true \
-    vendor.audio.parser.ip.buffer.size=262144 \
-    vendor.audio.safx.pbe.enabled=true \
-    vendor.audio.tunnel.encode=false \
-    vendor.audio.use.sw.alac.decoder=true \
-    vendor.audio.use.sw.ape.decoder=true \
-    vendor.audio.snd_card.open.retries=50 \
-    vendor.fm.a2dp.conc.disabled=true \
-    vendor.voice.path.for.pcm.voip=true \
-    vendor.audio.offload.min.duration.secs=60
+vendor.vidc.dec.enable.downscalar=0 \
+af.fast_track_multiplier=1 \
+persist.vendor.audio.dualmic.config=endfire \
+persist.vendor.audio.fluence.voicecall=true \
+persist.vendor.audio.fluence.voicecomm=true \
+persist.vendor.audio.fluence.voicerec=false \
+persist.vendor.audio.fluence.speaker=true \
+persist.vendor.audio.cal.defaultf0=920 \
+persist.vendor.audio.cal.defaultrefdiff=3129 \
+ro.config.vc_call_vol_steps=8 \
+vendor.mm.enable.qcom_parser=135715 \
+persist.vendor.audio.pdm.gain=2 \
+vendor.audio_hal.period_size=240 \
+media.recorder.show_manufacturer_and_model=true \
+vendor.audio.parser.ip.buffer.size=262144 \
+vendor.audio.use.sw.alac.decoder=false \
+vendor.audio.use.sw.ape.decoder=false \
+vendor.audio.snd_card.open.retries=50 \
+media.recorder.show_manufacturer_and_model=true \
+vendor.audio_hal.period_size=240  \
+ro.config.media_vol_steps=25 \
+
+PRODUCT_PROPERTY_OVERRIDES += \
+persist.audio.endcall.delay=250 \
+
+#offload pausetime out duration to 3 secs to inline with other outputs
+PRODUCT_PROPERTY_OVERRIDES += \
+vendor.audio.offload.pstimeout.secs=3
+
+#audio becoming noisy intent broadcast delay
+PRODUCT_PROPERTY_OVERRIDES += \
+vendor.audio.noisy.broadcast.delay=600
+
+#Enable multi channel aac through offload
+PRODUCT_PROPERTY_OVERRIDES += \
+vendor.audio.offload.multiaac.enable=true
+
+#Disable Compress passthrough playback
+PRODUCT_PROPERTY_OVERRIDES += \
+vendor.audio.offload.passthrough=false
+
+#multi offload
+PRODUCT_PROPERTY_OVERRIDES += \
+audio.offload.multiple.enabled=false \
+audio.offload.gapless.enabled=true \
+
+#enable pbe effects
+PRODUCT_PROPERTY_OVERRIDES += \
+audio.safx.pbe.enabled=true \
+
+#property for AudioSphere Post processing
+PRODUCT_PROPERTY_OVERRIDES += \
+audio.pp.asphere.enabled=false \
+
+#minimum duration for offload playback in secs
+PRODUCT_PROPERTY_OVERRIDES += \
+audio.offload.min.duration.secs=30 \
+
+#enable offload audio video playback by default
+PRODUCT_PROPERTY_OVERRIDES += \
+audio.offload.video=true \
+
+#enable music through deep buffer
+PRODUCT_PROPERTY_OVERRIDES += \
+audio.deep_buffer.media=true \
+
+#enable voice path for PCM VoIP by default
+PRODUCT_PROPERTY_OVERRIDES += \
+vendor.voice.path.for.pcm.voip=true
+
+#set AudioFlinger client heap size
+PRODUCT_PROPERTY_OVERRIDES += \
+ro.af.client_heap_size_kbyte=7168 \
+
+#Enable PCM offload by default
+PRODUCT_PROPERTY_OVERRIDES += \
+audio.offload.pcm.16bit.enable=true \
+audio.offload.pcm.24bit.enable=true \
+
+#Enable audio track offload by default
+PRODUCT_PROPERTY_OVERRIDES += \
+audio.offload.track.enable=true \
+
+#Enable music through deep buffer
+PRODUCT_PROPERTY_OVERRIDES += \
+audio.deep_buffer.media=true \
+
+#enable downsampling for multi-channel content > 48Khz
+PRODUCT_PROPERTY_OVERRIDES += \
+audio.playback.mch.downsample=true \
+
+#disable voice path for PCM VoIP by default
+PRODUCT_PROPERTY_OVERRIDES += \
+use.voice.path.for.pcm.voip=false \
+ro.config.vc_call_vol_steps=8 \
+ro.qc.sdk.audio.ssr=false \
+
+##fluencetype can be "fluence" or "fluencepro" or "none"
+PRODUCT_PROPERTY_OVERRIDES += \
+ro.qc.sdk.audio.fluencetype=none \
+persist.audio.fluence.voicecall=true \
+persist.audio.fluence.voicerec=false \
+persist.audio.fluence.speaker=true \
+
+#Set for SDM660
+PRODUCT_PROPERTY_OVERRIDES += \
+tunnel.audio.encode = false \
+
+#Buffer size in kbytes for compress offload playback
+PRODUCT_PROPERTY_OVERRIDES += \
+audio.offload.buffer.size.kb=64 \
+
+#Minimum duration for offload playback in secs
+PRODUCT_PROPERTY_OVERRIDES += \
+audio.offload.min.duration.secs=30 \
+persist.audio.qti.flac.decoder=true \
+
+#Enable offload audio video playback by default
+PRODUCT_PROPERTY_OVERRIDES += \
+audio.offload.video=true \
+audio.offload.disable=false \
+
+#min/max cpu in core control
+PRODUCT_PROPERTY_OVERRIDES += \
+ro.vendor.qti.core_ctl_min_cpu=2 \
+ro.vendor.qti.core_ctl_max_cpu=4 \
+
+# Rendering
+PRODUCT_PROPERTY_OVERRIDES += \
+    debug.enable.sglscale=1 \
+    debug.egl.hw=1 \
+    debug.sf.disable_hwc=0 \
+    debug.sf.recomputecrop=0 \
+    persist.hwc.ptor.enable=true \
+    debug.sf.gpu_comp_tiling=1
+
+#Increase cached app limit
+PRODUCT_PROPERTY_OVERRIDES += \
+ro.vendor.qti.sys.fw.bg_apps_limit=60 \
+
+# enable FIFO scheduling for UI and Render threads by default
+PRODUCT_PROPERTY_OVERRIDES += \
+    sys.use_fifo_ui=1
+
+# Fling
+PRODUCT_PROPERTY_OVERRIDES += \
+    ro.min.fling_velocity=160 \
+    ro.max.fling_velocity=20000
+
+# Memory optimizations
+PRODUCT_PROPERTY_OVERRIDES += \
+	ro.vendor.qti.sys.fw.bservice_enable=true
+
+#hwui properties
+PRODUCT_PROPERTY_OVERRIDES += \
+ro.hwui.texture_cache_size=72 \
+ro.hwui.layer_cache_size=48 \
+ro.hwui.r_buffer_cache_size=8 \
+ro.hwui.path_cache_size=32 \
+ro.hwui.gradient_cache_size=1 \
+ro.hwui.drop_shadow_cache_size=6 \
+ro.hwui.texture_cache_flushrate=0.4 \
+ro.hwui.text_small_cache_width=1024 \
+ro.hwui.text_small_cache_height=1024 \
+ro.hwui.text_large_cache_width=2048 \
+ro.hwui.text_large_cache_height=2048 \
+
+# ART
+PRODUCT_PROPERTY_OVERRIDES += \
+	dalvik.vm.dex2oat-filter=speed \
+	dalvik.vm.image-dex2oat-filter=speed \
+	ro.vendor.qti.am.reschedule_service=true \
+	ro.sys.fw.dex2oat_thread_count=8 \
+	dalvik.vm.boot-dex2oat-threads=8 \
+	dalvik.vm.dex2oat-threads=8
+
+# Media
+PRODUCT_PROPERTY_OVERRIDES += \
+    media.stagefright.enable-player=true \
+    media.stagefright.enable-http=true \
+    media.stagefright.enable-aac=true \
+    media.stagefright.enable-qcp=true \
+    media.stagefright.enable-scan=true \
+    mmp.enable.3g2=true \
+    mm.enable.qcom_parser=13631471 \
+    mm.enable.smoothstreaming=true \
+    vendor.vidc.dec.enable.downscalar=1 \
+    vendor.vidc.enc.disable.pq=false \
+    vendor.vidc.enc.disable_bframes=1 \
+    media.aac_51_output_enabled=true \
+    mm.enable.sec.smoothstreaming=true \
+    persist.mm.enable.prefetch=true \
+    vidc.enc.dcvs.extra-buff-count=2 \
+    persist.media.treble_omx=true \
+    vidc.enc.target_support_bframe=1
 
 # Bluetooth
 PRODUCT_PROPERTY_OVERRIDES += \
@@ -81,11 +236,16 @@ PRODUCT_PROPERTY_OVERRIDES += \
     vendor.gralloc.enable_fb_ubwc=1 \
     dev.pm.dyn_samplingrate=1 \
     ro.opengles.version=196610 \
+    debug.cpurend.vsync=false \
     ro.qualcomm.cabl=0
 
 # Factory reset partition
 PRODUCT_PROPERTY_OVERRIDES += \
     ro.frp.pst=/dev/block/platform/soc/c0c4000.sdhci/by-name/frp
+
+# Netflix
+PRODUCT_PROPERTY_OVERRIDES += \
+    ro.netflix.bsp_rev=Q660-13149-1
 
 # NFC
 PRODUCT_PROPERTY_OVERRIDES += \
@@ -201,15 +361,3 @@ PRODUCT_PROPERTY_OVERRIDES += \
 # Wifi
 PRODUCT_PROPERTY_OVERRIDES += \
     wifi.interface=wlan0
-
-# NavBar
-PRODUCT_PROPERTY_OVERRIDES += \
-    qemu.hw.mainkeys=0
-
-# SurfaceFlinger
-PRODUCT_DEFAULT_PROPERTY_OVERRIDES += \
-    ro.surface_flinger.protected_contents=true \
-    ro.surface_flinger.vsync_event_phase_offset_ns=2000000 \
-    ro.surface_flinger.vsync_sf_event_phase_offset_ns=6000000 \
-    ro.surface_flinger.use_color_management=true
-

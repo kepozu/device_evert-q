@@ -213,7 +213,7 @@
     <bool translatable="false" name="config_tether_upstream_automatic">true</bool>
 
     <!-- If this is true, the screen will fade off. -->
-    <bool name="config_animateScreenLights">true</bool>
+    <bool name="config_animateScreenLights">false</bool>
 
     <!-- Boolean indicating if current platform supports BLE peripheral mode -->
     <bool name="config_bluetooth_le_peripheral_mode_supported">true</bool>
@@ -405,9 +405,6 @@
         <item>"/apex/com.android.runtime/javalib/core-oj.jar"</item>
         <item>"/apex/com.android.runtime/javalib/core-libart.jar"</item>
         <item>"/apex/com.android.media/javalib/updatable-media.jar"</item>
-        <item>"/product/priv-app/SystemUI/SystemUI.apk"</item>
-        <item>"/product/priv-app/SystemUI/oat/arm/SystemUI.odex"</item>
-        <item>"/system/lib/libsurfaceflinger.so"</item>
     </string-array>
 
     <!-- List of files pinned by the Pinner Service with the apex boot image -->
@@ -419,8 +416,6 @@
         <item>"/apex/com.android.runtime/javalib/core-oj.jar"</item>
         <item>"/apex/com.android.runtime/javalib/core-libart.jar"</item>
         <item>"/apex/com.android.media/javalib/updatable-media.jar"</item>
-        <item>"/product/priv-app/SystemUI/SystemUI.apk"</item>
-        <item>"/system/lib/libsurfaceflinger.so"</item>
     </string-array>
 
     <!-- Values for USB port setting. in format of bootmode:current function:new function -->
