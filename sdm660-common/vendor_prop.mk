@@ -27,104 +27,37 @@ vendor.audio_hal.period_size=240  \
 ro.config.media_vol_steps=25 \
 vendor.audio.spkr_prot.tx.sampling_rate=48000\
 vendor.audio.feature.multi_voice_session.enable=true \
-
-PRODUCT_PROPERTY_OVERRIDES += \
 persist.audio.endcall.delay=250 \
-
-#offload pausetime out duration to 3 secs to inline with other outputs
-PRODUCT_PROPERTY_OVERRIDES += \
 audio.sys.offload.pstimeout.secs=3 \
-
-#audio becoming noisy intent broadcast delay
-PRODUCT_PROPERTY_OVERRIDES += \
 audio.sys.noisy.broadcast.delay=600 \
-
-#Enable multi channel aac through offload
-PRODUCT_PROPERTY_OVERRIDES += \
-vendor.audio.offload.multiaac.enable=true
-
-#Disable Compress passthrough playback
-PRODUCT_PROPERTY_OVERRIDES += \
+vendor.audio.offload.multiaac.enable=true \
 vendor.audio.offload.passthrough=false
-
-#multi offload
-PRODUCT_PROPERTY_OVERRIDES += \
 audio.offload.multiple.enabled=false \
 audio.offload.gapless.enabled=true \
-
-#enable pbe effects
-PRODUCT_PROPERTY_OVERRIDES += \
 audio.safx.pbe.enabled=true \
-
-#property for AudioSphere Post processing
-PRODUCT_PROPERTY_OVERRIDES += \
 audio.pp.asphere.enabled=false \
 
-#minimum duration for offload playback in secs
-PRODUCT_PROPERTY_OVERRIDES += \
 audio.offload.min.duration.secs=30 \
 
-#enable offload audio video playback by default
-PRODUCT_PROPERTY_OVERRIDES += \
 audio.offload.video=true \
-
-#enable music through deep buffer
-PRODUCT_PROPERTY_OVERRIDES += \
 audio.deep_buffer.media=true \
-
-#enable voice path for PCM VoIP by default
-PRODUCT_PROPERTY_OVERRIDES += \
 vendor.voice.path.for.pcm.voip=true
-
-#set AudioFlinger client heap size
-PRODUCT_PROPERTY_OVERRIDES += \
 ro.af.client_heap_size_kbyte=7168 \
-
-#Enable PCM offload by default
-PRODUCT_PROPERTY_OVERRIDES += \
 audio.offload.pcm.16bit.enable=true \
 audio.offload.pcm.24bit.enable=true \
-
-#Enable audio track offload by default
-PRODUCT_PROPERTY_OVERRIDES += \
 audio.offload.track.enable=true \
-
-#Enable music through deep buffer
-PRODUCT_PROPERTY_OVERRIDES += \
 audio.deep_buffer.media=true \
-
-#enable downsampling for multi-channel content > 48Khz
-PRODUCT_PROPERTY_OVERRIDES += \
 audio.playback.mch.downsample=true \
-
-#disable voice path for PCM VoIP by default
-PRODUCT_PROPERTY_OVERRIDES += \
-use.voice.path.for.pcm.voip=false \
 ro.config.vc_call_vol_steps=8 \
 ro.qc.sdk.audio.ssr=false \
-
-##fluencetype can be "fluence" or "fluencepro" or "none"
-PRODUCT_PROPERTY_OVERRIDES += \
 ro.qc.sdk.audio.fluencetype=none \
 persist.audio.fluence.voicecall=true \
 persist.audio.fluence.voicerec=false \
 persist.audio.fluence.speaker=true \
-
-#Set for SDM660
-PRODUCT_PROPERTY_OVERRIDES += \
 tunnel.audio.encode = false \
-
-#Buffer size in kbytes for compress offload playback
-PRODUCT_PROPERTY_OVERRIDES += \
 audio.offload.buffer.size.kb=64 \
-
-#Minimum duration for offload playback in secs
-PRODUCT_PROPERTY_OVERRIDES += \
 audio.offload.min.duration.secs=30 \
 persist.audio.qti.flac.decoder=true \
-
-#Enable offload audio video playback by default
-PRODUCT_PROPERTY_OVERRIDES += \
 audio.offload.video=true \
 audio.offload.disable=false \
 
@@ -134,13 +67,13 @@ ro.vendor.qti.core_ctl_min_cpu=2 \
 ro.vendor.qti.core_ctl_max_cpu=4 \
 
 # Rendering
-PRODUCT_PROPERTY_OVERRIDES += \
-    debug.enable.sglscale=1 \
-    debug.egl.hw=1 \
-    debug.sf.disable_hwc=0 \
-    debug.sf.recomputecrop=0 \
-    persist.hwc.ptor.enable=true \
-    debug.sf.gpu_comp_tiling=1
+#PRODUCT_PROPERTY_OVERRIDES += \
+#    debug.enable.sglscale=1 \
+#    debug.egl.hw=1 \
+#    debug.sf.disable_hwc=0 \
+#    debug.sf.recomputecrop=0 \
+#    persist.hwc.ptor.enable=true \
+#    debug.sf.gpu_comp_tiling=1
 
 #Increase cached app limit
 PRODUCT_PROPERTY_OVERRIDES += \
