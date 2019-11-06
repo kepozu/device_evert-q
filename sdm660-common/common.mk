@@ -381,7 +381,9 @@ PRODUCT_PACKAGES += \
     libstdc++.vendor \
     libgui_vendor \
     libgui  \
-    vndk_package
+    vndk_package \
+
+##vndk-ext \
 
 # Weaver
 PRODUCT_PACKAGES += \

@@ -25,17 +25,19 @@ vendor.audio.snd_card.open.retries=50 \
 media.recorder.show_manufacturer_and_model=true \
 vendor.audio_hal.period_size=240  \
 ro.config.media_vol_steps=25 \
+vendor.audio.spkr_prot.tx.sampling_rate=48000\
+vendor.audio.feature.multi_voice_session.enable=true \
 
 PRODUCT_PROPERTY_OVERRIDES += \
 persist.audio.endcall.delay=250 \
 
 #offload pausetime out duration to 3 secs to inline with other outputs
 PRODUCT_PROPERTY_OVERRIDES += \
-vendor.audio.offload.pstimeout.secs=3
+audio.sys.offload.pstimeout.secs=3 \
 
 #audio becoming noisy intent broadcast delay
 PRODUCT_PROPERTY_OVERRIDES += \
-vendor.audio.noisy.broadcast.delay=600
+audio.sys.noisy.broadcast.delay=600 \
 
 #Enable multi channel aac through offload
 PRODUCT_PROPERTY_OVERRIDES += \
@@ -212,7 +214,8 @@ PRODUCT_PROPERTY_OVERRIDES += \
     vendor.qcom.bluetooth.soc=cherokee \
     vendor.bluetooth.soc=cherokee \
     ro.vendor.bluetooth.wipower=false \
-    ro.bluetooth.a4wp=false
+    ro.bluetooth.a4wp=false \
+    persist.vendor.bt.aac_frm_ctl.enabled=true
 
 # Camera
 PRODUCT_PROPERTY_OVERRIDES += \
@@ -370,3 +373,8 @@ PRODUCT_PROPERTY_OVERRIDES += \
 # OEM Unlock reporting
 PRODUCT_DEFAULT_PROPERTY_OVERRIDES += \
     ro.oem_unlock_supported=1
+
+# SurfaceFlinger
+PRODUCT_DEFAULT_PROPERTY_OVERRIDES += \
+    ro.surface_flinger.force_hwc_copy_for_virtual_displays=true \
+    ro.surface_flinger.max_virtual_display_dimension=4096
