@@ -80,8 +80,8 @@ PRODUCT_PROPERTY_OVERRIDES += \
 ro.vendor.qti.sys.fw.bg_apps_limit=60 \
 
 # enable FIFO scheduling for UI and Render threads by default
-PRODUCT_PROPERTY_OVERRIDES += \
-    sys.use_fifo_ui=1
+#PRODUCT_PROPERTY_OVERRIDES += \
+#    sys.use_fifo_ui=1
 
 # Fling
 PRODUCT_PROPERTY_OVERRIDES += \
@@ -307,10 +307,22 @@ PRODUCT_PROPERTY_OVERRIDES += \
 PRODUCT_DEFAULT_PROPERTY_OVERRIDES += \
     ro.oem_unlock_supported=1
 
-# SurfaceFlinger
+# SurfaceFlinger 1
 PRODUCT_DEFAULT_PROPERTY_OVERRIDES += \
     ro.surface_flinger.force_hwc_copy_for_virtual_displays=true \
     ro.surface_flinger.max_virtual_display_dimension=4096
+
+# Surfaceflinger 2
+PRODUCT_PROPERTY_OVERRIDES += \
+    debug.sf.early_phase_offset_ns=1500000 \
+    debug.sf.early_app_phase_offset_ns=1500000 \
+    debug.sf.early_gl_phase_offset_ns=3000000 \
+    debug.sf.early_gl_app_phase_offset_ns=15000000
+
+# SurfaceFlinger 3
+PRODUCT_DEFAULT_PROPERTY_OVERRIDES += \
+    ro.surface_flinger.vsync_event_phase_offset_ns=2000000 \
+    ro.surface_flinger.vsync_sf_event_phase_offset_ns=6000000
 
 
 #Storaged
