@@ -311,3 +311,23 @@ PRODUCT_DEFAULT_PROPERTY_OVERRIDES += \
 PRODUCT_DEFAULT_PROPERTY_OVERRIDES += \
     ro.surface_flinger.force_hwc_copy_for_virtual_displays=true \
     ro.surface_flinger.max_virtual_display_dimension=4096
+
+
+#Storaged
+PRODUCT_PROPERTY_OVERRIDES += \
+        ro.storaged.event.interval=99999
+
+# VoLTE / VoWifi -Radio
+PRODUCT_PROPERTY_OVERRIDES += \
+    persist.dbg.ims_volte_enable=1 \
+    persist.dbg.volte_avail_ovr=1 \
+    persist.dbg.vt_avail_ovr=1 \
+    persist.dbg.wfc_avail_ovr=1 \
+    persist.radio.calls.on.ims=1
+
+# IMS
+PRODUCT_PROPERTY_OVERRIDES += \
+	persist.radio.videopause.mode=1 \
+	persist.data.iwlan.enable=true \
+	persist.radio.VT_HYBRID_ENABLE=1 \
+        persist.vendor.ims.disableUserAgent=0

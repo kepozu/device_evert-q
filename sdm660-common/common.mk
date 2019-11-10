@@ -61,7 +61,7 @@ PRODUCT_PACKAGES += \
 
 # Bt audio policy configuration for qti audio (for android 10 )
 PRODUCT_COPY_FILES += \
-    $(COMMON_PATH)/audio/bluetooth_qti_audio_policy_configuration.xml:$(TARGET_COPY_OUT_VENDOR)/etc/bluetooth_qti_audio_policy_configuration.xml 
+    $(LOCAL_PATH)/configs/bluetooth_qti_audio_policy_configuration.xml:$(TARGET_COPY_OUT_VENDOR)/etc/bluetooth_qti_audio_policy_configuration.xml 
 
 PRODUCT_COPY_FILES += \
     frameworks/av/services/audiopolicy/config/a2dp_audio_policy_configuration.xml:$(TARGET_COPY_OUT_VENDOR)/etc/a2dp_audio_policy_configuration.xml \
