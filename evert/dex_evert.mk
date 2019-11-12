@@ -63,6 +63,12 @@ else
     TARGET_RECOVERY_FSTAB := device/motorola/sdm660-common/rootdir/etc/fstab.qcom
 endif
 
+export export DEX_BUILD_TYPE=official
+
+#device maintainer
+PRODUCT_PROPERTY_OVERRIDES += \
+ 	ro.dex.maintainer=-SɇƀȺ-_-3567-
+
 # Device identifiers
 PRODUCT_DEVICE := evert
 PRODUCT_NAME := dex_evert

@@ -236,9 +236,8 @@ BOARD_ROOT_EXTRA_SYMLINKS := \
 VENDOR_SECURITY_PATCH := 2019-10-05
 
 # SELinux
-# include device/qcom/sepolicy/sepolicy.mk
-# BOARD_SEPOLICY_DIRS += $(COMMON_PATH)/sepolicy/vendor
-# BOARD_PLAT_PRIVATE_SEPOLICY_DIR += $(COMMON_PATH)/sepolicy/private
+#include device/qcom/sepolicy/sepolicy.mk
+#BOARD_SEPOLICY_DIRS += $(COMMON_PATH)/sepolicy/vendor
 BOARD_SEPOLICY_DIRS += $(COMMON_PATH)/sepolicy_base
 
 # Timeservice

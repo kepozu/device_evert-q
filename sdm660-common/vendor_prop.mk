@@ -314,10 +314,10 @@ PRODUCT_DEFAULT_PROPERTY_OVERRIDES += \
 
 # Surfaceflinger 2
 PRODUCT_PROPERTY_OVERRIDES += \
-    debug.sf.early_phase_offset_ns=1500000 \
-    debug.sf.early_app_phase_offset_ns=1500000 \
-    debug.sf.early_gl_phase_offset_ns=3000000 \
-    debug.sf.early_gl_app_phase_offset_ns=15000000
+    debug.sf.early_phase_offset_ns=1600000 \
+    debug.sf.early_app_phase_offset_ns=1600000 \
+    debug.sf.early_gl_phase_offset_ns=3100000 \
+    debug.sf.early_gl_app_phase_offset_ns=16000000
 
 # SurfaceFlinger 3
 PRODUCT_DEFAULT_PROPERTY_OVERRIDES += \
