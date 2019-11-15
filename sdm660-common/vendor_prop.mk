@@ -314,10 +314,10 @@ PRODUCT_DEFAULT_PROPERTY_OVERRIDES += \
 
 # Surfaceflinger 2
 PRODUCT_PROPERTY_OVERRIDES += \
-    debug.sf.early_phase_offset_ns=1600000 \
-    debug.sf.early_app_phase_offset_ns=1600000 \
-    debug.sf.early_gl_phase_offset_ns=3100000 \
-    debug.sf.early_gl_app_phase_offset_ns=16000000
+    debug.sf.early_phase_offset_ns=1500000 \
+    debug.sf.early_app_phase_offset_ns=1500000 \
+    debug.sf.early_gl_phase_offset_ns=3000000 \
+    debug.sf.early_gl_app_phase_offset_ns=15000000
 
 # SurfaceFlinger 3
 PRODUCT_DEFAULT_PROPERTY_OVERRIDES += \
@@ -330,16 +330,20 @@ PRODUCT_PROPERTY_OVERRIDES += \
         ro.storaged.event.interval=99999
 
 # VoLTE / VoWifi -Radio
-PRODUCT_PROPERTY_OVERRIDES += \
-    persist.dbg.ims_volte_enable=1 \
-    persist.dbg.volte_avail_ovr=1 \
-    persist.dbg.vt_avail_ovr=1 \
-    persist.dbg.wfc_avail_ovr=1 \
-    persist.radio.calls.on.ims=1
+#PRODUCT_PROPERTY_OVERRIDES += \
+#    persist.dbg.ims_volte_enable=1 \
+#    persist.dbg.volte_avail_ovr=1 \
+#    persist.dbg.vt_avail_ovr=1 \
+#    persist.dbg.wfc_avail_ovr=1 \
+#    persist.radio.calls.on.ims=1
 
 # IMS
+#PRODUCT_PROPERTY_OVERRIDES += \
+#	persist.radio.videopause.mode=1 \
+#	persist.data.iwlan.enable=true \
+#	persist.radio.VT_HYBRID_ENABLE=1 \
+#        persist.vendor.ims.disableUserAgent=0
+
+# NavBar
 PRODUCT_PROPERTY_OVERRIDES += \
-	persist.radio.videopause.mode=1 \
-	persist.data.iwlan.enable=true \
-	persist.radio.VT_HYBRID_ENABLE=1 \
-        persist.vendor.ims.disableUserAgent=0
+    qemu.hw.mainkeys=0
