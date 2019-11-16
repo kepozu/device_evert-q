@@ -63,7 +63,7 @@ else
     TARGET_RECOVERY_FSTAB := device/motorola/sdm660-common/rootdir/etc/fstab.qcom
 endif
 
-export export DEX_BUILD_TYPE=official
+#export export DEX_BUILD_TYPE=official
 
 #device maintainer
 PRODUCT_PROPERTY_OVERRIDES += \
