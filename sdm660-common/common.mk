@@ -59,7 +59,7 @@ PRODUCT_PACKAGES += \
     libvolumelistener \
     tinymix
 
-# Bt audio policy configuration for qti audio (for android 10 )
+# BT audio policy configuration for qti audio (for android 10 )
 PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/configs/bluetooth_qti_audio_policy_configuration.xml:$(TARGET_COPY_OUT_VENDOR)/etc/bluetooth_qti_audio_policy_configuration.xml 
 
@@ -85,9 +85,9 @@ PRODUCT_PACKAGES += \
     android.hardware.boot@1.0-service
 
 # Perf
-PRODUCT_COPY_FILES += \
-    $(LOCAL_PATH)/configs/perf/perf-profile0.conf:$(TARGET_COPY_OUT_VENDOR)/etc/perf/perf-profile0.conf \
-    $(LOCAL_PATH)/configs/perf/perf-profile1.conf:$(TARGET_COPY_OUT_VENDOR)/etc/perf/perf-profile1.conf   
+#PRODUCT_COPY_FILES += \
+#    $(LOCAL_PATH)/configs/perf/perf-profile0.conf:$(TARGET_COPY_OUT_VENDOR)/etc/perf/perf-profile0.conf \
+#    $(LOCAL_PATH)/configs/perf/perf-profile1.conf:$(TARGET_COPY_OUT_VENDOR)/etc/perf/perf-profile1.conf   
 
 # Camera
 PRODUCT_PACKAGES += \

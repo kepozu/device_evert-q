@@ -62,7 +62,7 @@ PRODUCT_PACKAGES += \
     init.mmi.acdb.sh
 
 # Lineage hardware
-PRODUCT_PACKAGES += \
+#PRODUCT_PACKAGES += \
     vendor.lineage.touch@1.0-service.sdm660
 
 # NFC
