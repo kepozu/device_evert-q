@@ -60,33 +60,40 @@ audio.offload.min.duration.secs=30 \
 persist.audio.qti.flac.decoder=true \
 audio.offload.video=true \
 audio.offload.disable=false \
+vendor.audio.spkr_prot.tx.sampling_rate=48000\
 
 #min/max cpu in core control
 PRODUCT_PROPERTY_OVERRIDES += \
 ro.vendor.qti.core_ctl_min_cpu=2 \
 ro.vendor.qti.core_ctl_max_cpu=4 \
 
+# IMS
+PRODUCT_SYSTEM_DEFAULT_PROPERTIES += \
+    persist.dbg.volte_avail_ovr=1 \
+    persist.dbg.vt_avail_ovr=1 \
+    persist.dbg.wfc_avail_ovr=1
+
 # Rendering
-#PRODUCT_PROPERTY_OVERRIDES += \
-#    debug.enable.sglscale=1 \
-#    debug.egl.hw=1 \
-#    debug.sf.disable_hwc=0 \
-#    debug.sf.recomputecrop=0 \
-#    persist.hwc.ptor.enable=true \
-#    debug.sf.gpu_comp_tiling=1
+PRODUCT_PROPERTY_OVERRIDES += \
+    debug.enable.sglscale=1 \
+    debug.egl.hw=1 \
+    debug.sf.disable_hwc=0 \
+    debug.sf.recomputecrop=0 \
+    persist.hwc.ptor.enable=true \
+    debug.sf.gpu_comp_tiling=1
 
 #Increase cached app limit
 PRODUCT_PROPERTY_OVERRIDES += \
 ro.vendor.qti.sys.fw.bg_apps_limit=60 \
 
 # enable FIFO scheduling for UI and Render threads by default
-#PRODUCT_PROPERTY_OVERRIDES += \
-#    sys.use_fifo_ui=1
+PRODUCT_PROPERTY_OVERRIDES += \
+    sys.use_fifo_ui=1
 
 # Fling
-PRODUCT_PROPERTY_OVERRIDES += \
-    ro.min.fling_velocity=160 \
-    ro.max.fling_velocity=20000
+#PRODUCT_PROPERTY_OVERRIDES += \
+#   ro.min.fling_velocity=160 \
+#    ro.max.fling_velocity=20000
 
 # Memory optimizations
 PRODUCT_PROPERTY_OVERRIDES += \
@@ -126,6 +133,7 @@ PRODUCT_PROPERTY_OVERRIDES += \
     media.stagefright.enable-http=true \
     media.stagefright.enable-aac=true \
     media.stagefright.enable-qcp=true \
+    media.stagefright.enable-fma2dp=true \
     media.stagefright.enable-scan=true \
     mmp.enable.3g2=true \
     mm.enable.qcom_parser=13631471 \
@@ -179,6 +187,7 @@ PRODUCT_PROPERTY_OVERRIDES += \
     ro.opengles.version=196610 \
     debug.cpurend.vsync=false \
     ro.qualcomm.cabl=0 \
+    debug.sf.enable_gl_backpressure=1 \
 
 # Factory reset partition
 PRODUCT_PROPERTY_OVERRIDES += \
@@ -328,21 +337,6 @@ PRODUCT_DEFAULT_PROPERTY_OVERRIDES += \
 #Storaged
 PRODUCT_PROPERTY_OVERRIDES += \
         ro.storaged.event.interval=99999
-
-# VoLTE / VoWifi -Radio
-#PRODUCT_PROPERTY_OVERRIDES += \
-#    persist.dbg.ims_volte_enable=1 \
-#    persist.dbg.volte_avail_ovr=1 \
-#    persist.dbg.vt_avail_ovr=1 \
-#    persist.dbg.wfc_avail_ovr=1 \
-#    persist.radio.calls.on.ims=1
-
-# IMS
-#PRODUCT_PROPERTY_OVERRIDES += \
-#	persist.radio.videopause.mode=1 \
-#	persist.data.iwlan.enable=true \
-#	persist.radio.VT_HYBRID_ENABLE=1 \
-#        persist.vendor.ims.disableUserAgent=0
 
 # NavBar
 PRODUCT_PROPERTY_OVERRIDES += \

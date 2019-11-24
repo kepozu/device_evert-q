@@ -41,6 +41,10 @@ PRODUCT_COPY_FILES += \
 # Overlays
 DEVICE_PACKAGE_OVERLAYS += $(LOCAL_PATH)/overlay
 
+# Lineage hardware
+PRODUCT_PACKAGES += \
+    vendor.lineage.touch@1.0-service.sdm660
+
 # Audio
 PRODUCT_PACKAGES += \
     android.hardware.audio@5.0 \
@@ -197,6 +201,7 @@ PRODUCT_PACKAGES += \
 # IPACM
 PRODUCT_PACKAGES += \
     ipacm \
+    ipacm.rc \
     IPACM_cfg.xml \
     libipanat \
     liboffloadhal
