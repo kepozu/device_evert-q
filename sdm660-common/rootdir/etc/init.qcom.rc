@@ -1167,12 +1167,6 @@ service vendor.esepmdaemon /vendor/bin/esepmdaemon
     user system
     group nfc
 
-service vendor.time_daemon /vendor/bin/time_daemon
-    class main
-    user root
-    group root
-    writepid /dev/cpuset/system-background/tasks
-
 service vendor.qdmastatsd /vendor/bin/qdmastatsd
     class late_start
     user system
