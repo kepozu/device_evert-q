@@ -37,11 +37,7 @@ vendor/lib64/libaudioalsa.so
 vendor/lib64/libaudioparsers.so
 vendor/lib64/libqtigef.so
 
-# Bluetooth LA.UM.8.2.r1-04300-sdm660.0
-lib/libbluetooth_qti.so
-lib/libbtconfigstore.so
-lib64/libbluetooth_qti.so
-lib64/libbtconfigstore.so
+# Bluetooth
 vendor/bin/hw/android.hardware.bluetooth@1.0-service-qti
 vendor/etc/init/android.hardware.bluetooth@1.0-service-qti.rc
 vendor/lib64/hw/android.hardware.bluetooth@1.0-impl-qti.so
@@ -51,41 +47,27 @@ vendor/lib/hw/android.hardware.bluetooth@1.0-impl-qti.so
 vendor/lib/libbtnv.so
 vendor/lib/libbt-hidlclient.so
 
-# Bluetooth (shared dependencies) LA.UM.8.2.r1-04300-sdm660.0
-product/lib64/com.qualcomm.qti.ant@1.0.so
-product/lib64/com.qualcomm.qti.bluetooth_audio@1.0.so
-product/lib/com.qualcomm.qti.ant@1.0.so
-product/lib/com.qualcomm.qti.bluetooth_audio@1.0.so
+# Bluetooth (shared dependencies)
 vendor/lib64/com.qualcomm.qti.ant@1.0.so
 vendor/lib/com.qualcomm.qti.ant@1.0.so
 
-# Bluetooth Audio LA.UM.8.2.r1-04300-sdm660.0
-product/lib64/vendor.qti.hardware.bluetooth_audio@2.0.so
-product/lib64/vendor.qti.hardware.bluetooth_dun@1.0.so
-product/lib64/vendor.qti.hardware.bluetooth_sar@1.0.so
-product/lib64/vendor.qti.hardware.btconfigstore@1.0.so
-product/lib/vendor.qti.hardware.bluetooth_audio@2.0.so
-product/lib/vendor.qti.hardware.bluetooth_dun@1.0.so
-product/lib/vendor.qti.hardware.bluetooth_sar@1.0.so
-product/lib/vendor.qti.hardware.btconfigstore@1.0.so
+# Bluetooth Audio
 vendor/lib64/hw/audio.bluetooth_qti.default.so
 vendor/lib64/hw/vendor.qti.hardware.bluetooth_audio@2.0-impl.so
 vendor/lib64/hw/vendor.qti.hardware.bluetooth_sar@1.0-impl.so
 vendor/lib64/hw/vendor.qti.hardware.btconfigstore@1.0-impl.so
-vendor/lib64/btaudio_offload_if.so
-vendor/lib64/libbluetooth_audio_session_qti.so
 vendor/lib64/vendor.qti.hardware.bluetooth_audio@2.0.so
 vendor/lib64/vendor.qti.hardware.bluetooth_sar@1.0.so
 vendor/lib64/vendor.qti.hardware.btconfigstore@1.0.so
+vendor/lib64/libbluetooth_audio_session_qti.so
 vendor/lib/hw/audio.bluetooth_qti.default.so
 vendor/lib/hw/vendor.qti.hardware.bluetooth_audio@2.0-impl.so
 vendor/lib/hw/vendor.qti.hardware.bluetooth_sar@1.0-impl.so
 vendor/lib/hw/vendor.qti.hardware.btconfigstore@1.0-impl.so
-vendor/lib/btaudio_offload_if.so
-vendor/lib/libbluetooth_audio_session_qti.so
 vendor/lib/vendor.qti.hardware.bluetooth_audio@2.0.so
 vendor/lib/vendor.qti.hardware.bluetooth_sar@1.0.so
 vendor/lib/vendor.qti.hardware.btconfigstore@1.0.so
+vendor/lib/libbluetooth_audio_session_qti.so
 
 # CNE - from LA.UM.8.2.r1-04300-sdm660.0
 etc/cne/Nexus/ATT/ATT_profiles.xml|33e568627fd3f94dc45bca1c01ad10e6d8fb5b52

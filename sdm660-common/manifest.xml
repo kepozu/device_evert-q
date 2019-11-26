@@ -280,21 +280,21 @@
             <instance>default</instance>
         </interface>
     </hal>
-    <hal format="hidl" optional="true">
-        <name>vendor.qti.hardware.wifi.hostapd</name>
+    <hal format="hidl">
+        <name>android.hardware.wifi.hostapd</name>
         <transport>hwbinder</transport>
         <version>1.1</version>
         <interface>
-            <name>IHostapdVendor</name>
+            <name>IHostapd</name>
             <instance>default</instance>
         </interface>
     </hal>
-    <hal format="hidl" optional="true">
-        <name>vendor.qti.hardware.wifi.supplicant</name>
+    <hal format="hidl">
+        <name>android.hardware.wifi.supplicant</name>
         <transport>hwbinder</transport>
-        <version>2.1</version>
+        <version>1.2</version>
         <interface>
-            <name>ISupplicantVendor</name>
+            <name>ISupplicant</name>
             <instance>default</instance>
         </interface>
     </hal>

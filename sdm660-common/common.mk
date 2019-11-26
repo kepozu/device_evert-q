@@ -41,10 +41,6 @@ PRODUCT_COPY_FILES += \
 # Overlays
 DEVICE_PACKAGE_OVERLAYS += $(LOCAL_PATH)/overlay
 
-# Lineage hardware
-PRODUCT_PACKAGES += \
-    vendor.lineage.touch@1.0-service.sdm660
-
 # Audio
 PRODUCT_PACKAGES += \
     android.hardware.audio@5.0 \
@@ -69,11 +65,8 @@ PRODUCT_PACKAGES += \
     tinymix
 
 # BT audio policy configuration for qti audio (for android 10 )
-#PRODUCT_COPY_FILES += \
- #   $(LOCAL_PATH)/configs/bluetooth_qti_audio_policy_configuration.xml:$(TARGET_COPY_OUT_VENDOR)/etc/bluetooth_qti_audio_policy_configuration.xml 
-
-PRODUCT_PROPERTY_OVERRIDES += \
-    ro.bluetooth.library_name=libbluetooth_qti.so
+PRODUCT_COPY_FILES += \
+    $(LOCAL_PATH)/configs/bluetooth_qti_audio_policy_configuration.xml:$(TARGET_COPY_OUT_VENDOR)/etc/bluetooth_qti_audio_policy_configuration.xml 
 
 PRODUCT_COPY_FILES += \
     frameworks/av/services/audiopolicy/config/a2dp_audio_policy_configuration.xml:$(TARGET_COPY_OUT_VENDOR)/etc/a2dp_audio_policy_configuration.xml \
@@ -89,9 +82,6 @@ PRODUCT_COPY_FILES += \
 # Bluetooth
 PRODUCT_PACKAGES += \
     android.hardware.bluetooth@1.0 \
-    android.hardware.bluetooth.audio@2.0-impl \
-    audio.bluetooth.default \
-    libbthost_if \
     libbt-vendor
 
 # Boot control HAL
@@ -432,8 +422,6 @@ PRODUCT_PACKAGES += \
     libQWiFiSoftApCfg \
     libwifi-hal-qcom \
     libwpa_client \
-    vendor.qti.hardware.wifi.supplicant@2.1_vendor \
-    vendor.qti.hardware.wifi.hostapd@1.1.vendor \
     wificond \
     wifilogd \
     wpa_supplicant \

@@ -69,15 +69,9 @@ ro.vendor.qti.core_ctl_max_cpu=4 \
 
 # IMS
 PRODUCT_SYSTEM_DEFAULT_PROPERTIES += \
-    pepersist.dbg.ims_volte_enable=1 \
-persist.dbg.volte_avail_ovr=1 \
-persist.dbg.vt_avail_ovr=1 \
-persist.radio.aosp_usr_pref_sel=true\
-persist.vendor.radio.rat_on=combine\
-persist.vendor.radio.data_ltd_sys_ind=1\
-persist.vendor.radio.data_con_rprt=1\
-persist.radio.calls.on.ims=1\
-persist.dbg.wfc_avail_ovr=1\
+    persist.dbg.volte_avail_ovr=1 \
+    persist.dbg.vt_avail_ovr=1 \
+    persist.dbg.wfc_avail_ovr=1
 
 # Rendering
 PRODUCT_PROPERTY_OVERRIDES += \
@@ -157,8 +151,7 @@ PRODUCT_PROPERTY_OVERRIDES += \
 # Bluetooth
 PRODUCT_PROPERTY_OVERRIDES += \
     bt.max.hfpclient.connections=1 \
-    persist.vendor.qcom.bluetooth.a2dp_offload_cap=sbc-aptx-aptxhd-aac-ldac \
-    persist.vendor.qcom.bluetooth.enable.splita2dp=false \
+    persist.vendor.bt.a2dp_offload_cap=sbc-aptx-aptxhd-aac \
     vendor.qcom.bluetooth.soc=cherokee \
     vendor.bluetooth.soc=cherokee \
     ro.vendor.bluetooth.wipower=false \
@@ -192,6 +185,7 @@ PRODUCT_PROPERTY_OVERRIDES += \
     vendor.gralloc.enable_fb_ubwc=1 \
     dev.pm.dyn_samplingrate=1 \
     ro.opengles.version=196610 \
+    debug.cpurend.vsync=false \
     ro.qualcomm.cabl=0 \
     debug.sf.enable_gl_backpressure=1 \
 
