@@ -655,21 +655,12 @@
             <instance>default</instance>
         </interface>
     </hal>
-    <hal format="hidl">
-        <name>android.hardware.tetheroffload.config</name>
+   <hal format="hidl">
+        <name>motorola.hardware.audio.adspd</name>
         <transport>hwbinder</transport>
         <version>1.0</version>
         <interface>
-            <name>IOffloadConfig</name>
-            <instance>default</instance>
-        </interface>
-    </hal>
-    <hal format="hidl">
-        <name>android.hardware.bluetooth.a2dp</name>
-        <transport>hwbinder</transport>
-        <version>1.0</version>
-        <interface>
-            <name>IBluetoothAudioOffload</name>
+            <name>IADSP</name>
             <instance>default</instance>
         </interface>
     </hal>

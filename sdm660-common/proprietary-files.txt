@@ -38,6 +38,10 @@ vendor/lib64/libaudioparsers.so
 vendor/lib64/libqtigef.so
 
 # Bluetooth
+lib/libbluetooth_qti.so
+lib/libbtconfigstore.so
+lib64/libbluetooth_qti.so
+lib64/libbtconfigstore.so
 vendor/bin/hw/android.hardware.bluetooth@1.0-service-qti
 vendor/etc/init/android.hardware.bluetooth@1.0-service-qti.rc
 vendor/lib64/hw/android.hardware.bluetooth@1.0-impl-qti.so
@@ -48,26 +52,40 @@ vendor/lib/libbtnv.so
 vendor/lib/libbt-hidlclient.so
 
 # Bluetooth (shared dependencies)
+product/lib64/com.qualcomm.qti.ant@1.0.so
+product/lib64/com.qualcomm.qti.bluetooth_audio@1.0.so
+product/lib/com.qualcomm.qti.ant@1.0.so
+product/lib/com.qualcomm.qti.bluetooth_audio@1.0.so
 vendor/lib64/com.qualcomm.qti.ant@1.0.so
 vendor/lib/com.qualcomm.qti.ant@1.0.so
 
 # Bluetooth Audio
+product/lib64/vendor.qti.hardware.bluetooth_audio@2.0.so
+product/lib64/vendor.qti.hardware.bluetooth_dun@1.0.so
+product/lib64/vendor.qti.hardware.bluetooth_sar@1.0.so
+product/lib64/vendor.qti.hardware.btconfigstore@1.0.so
+product/lib/vendor.qti.hardware.bluetooth_audio@2.0.so
+product/lib/vendor.qti.hardware.bluetooth_dun@1.0.so
+product/lib/vendor.qti.hardware.bluetooth_sar@1.0.so
+product/lib/vendor.qti.hardware.btconfigstore@1.0.so
 vendor/lib64/hw/audio.bluetooth_qti.default.so
 vendor/lib64/hw/vendor.qti.hardware.bluetooth_audio@2.0-impl.so
 vendor/lib64/hw/vendor.qti.hardware.bluetooth_sar@1.0-impl.so
 vendor/lib64/hw/vendor.qti.hardware.btconfigstore@1.0-impl.so
+vendor/lib64/btaudio_offload_if.so
+vendor/lib64/libbluetooth_audio_session_qti.so
 vendor/lib64/vendor.qti.hardware.bluetooth_audio@2.0.so
 vendor/lib64/vendor.qti.hardware.bluetooth_sar@1.0.so
 vendor/lib64/vendor.qti.hardware.btconfigstore@1.0.so
-vendor/lib64/libbluetooth_audio_session_qti.so
 vendor/lib/hw/audio.bluetooth_qti.default.so
 vendor/lib/hw/vendor.qti.hardware.bluetooth_audio@2.0-impl.so
 vendor/lib/hw/vendor.qti.hardware.bluetooth_sar@1.0-impl.so
 vendor/lib/hw/vendor.qti.hardware.btconfigstore@1.0-impl.so
+vendor/lib/btaudio_offload_if.so
+vendor/lib/libbluetooth_audio_session_qti.so
 vendor/lib/vendor.qti.hardware.bluetooth_audio@2.0.so
 vendor/lib/vendor.qti.hardware.bluetooth_sar@1.0.so
 vendor/lib/vendor.qti.hardware.btconfigstore@1.0.so
-vendor/lib/libbluetooth_audio_session_qti.so
 
 # CNE - from LA.UM.8.2.r1-04300-sdm660.0
 etc/cne/Nexus/ATT/ATT_profiles.xml|33e568627fd3f94dc45bca1c01ad10e6d8fb5b52
@@ -755,3 +773,28 @@ vendor/lib/libwfdmmservice.so|910dbd346aabc786d77daddf65949eb3610ecf80
 vendor/lib/libwfdmodulehdcpsession.so|ee1609c30970faca5cc081f3a7282f7334963db3
 vendor/lib64/libmmosal_proprietary.so|4d8519a7f796dcc3e299596255f69e1d9681f4b5
 vendor/lib64/libwfdhdcpcp.so|3cdb7bdfa137c1dd1e871e116145dd4ffafbaedc
+
+# Moto ADSP Hal - (Listen Dependencies)
+vendor/bin/hw/motorola.hardware.audio.adspd@1.0-service
+vendor/etc/init/motorola.hardware.audio.adspd@1.0-service.rc
+vendor/lib/libadspd.so
+vendor/lib/motorola.hardware.audio.adspd@1.0-impl.so
+vendor/lib/motorola.hardware.audio.adspd@1.0_vendor.so
+vendor/lib/motorola.hardware.audio.adspd@1.0.so
+vendor/lib64/vndk/libtinyalsa.so
+vendor/lib64/libadspd.so
+vendor/lib64/motorola.hardware.audio.adspd@1.0-impl.so
+vendor/lib64/motorola.hardware.audio.adspd@1.0.so
+
+# Listen - from LA.UM.8.2.r1-04300-sdm660.0
+vendor/lib/hw/sound_trigger.primary.default.so:vendor/lib/hw/sound_trigger.primary.sdm660.so|44a9016f876260dd9d317000dc567bb836a16d02
+vendor/lib/libgcs-calwrapper.so
+vendor/lib/libgcs-ipc.so
+vendor/lib/libgcs-osal.so
+vendor/lib/libgcs.so
+vendor/lib/vendor.qti.voiceprint@1.0.so
+vendor/lib64/libgcs-calwrapper.so
+vendor/lib64/libgcs-ipc.so
+vendor/lib64/libgcs-osal.so
+vendor/lib64/libgcs.so
+vendor/lib64/vendor.qti.voiceprint@1.0.so
