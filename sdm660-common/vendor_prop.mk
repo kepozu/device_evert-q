@@ -126,15 +126,6 @@ PRODUCT_PROPERTY_OVERRIDES += \
 PRODUCT_PROPERTY_OVERRIDES += \
 ro.vendor.qti.sys.fw.bg_apps_limit=60 \
 
-# enable FIFO scheduling for UI and Render threads by default
-PRODUCT_PROPERTY_OVERRIDES += \
-    sys.use_fifo_ui=1
-
-# Fling
-PRODUCT_PROPERTY_OVERRIDES += \
-   ro.min.fling_velocity=160 \
-    ro.max.fling_velocity=20000
-
 # Memory optimizations
 PRODUCT_PROPERTY_OVERRIDES += \
 	ro.vendor.qti.sys.fw.bservice_enable=true
