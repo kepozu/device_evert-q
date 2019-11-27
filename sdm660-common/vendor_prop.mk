@@ -197,7 +197,8 @@ PRODUCT_PROPERTY_OVERRIDES += \
     vendor.bluetooth.soc=cherokee \
     ro.vendor.bluetooth.wipower=false \
     ro.bluetooth.a4wp=false \
-    persist.vendor.bt.aac_frm_ctl.enabled=true
+    persist.vendor.bt.aac_frm_ctl.enabled=true \
+    ro.bluetooth.library_name=libbluetooth_qti.so
 
 # Camera
 PRODUCT_PROPERTY_OVERRIDES += \

@@ -87,9 +87,6 @@ PRODUCT_PACKAGES += \
     libbthost_if \
     libbt-vendor
 
-PRODUCT_PROPERTY_OVERRIDES += \
-    ro.bluetooth.library_name=libbluetooth_qti.so
-
 # Boot control HAL
 PRODUCT_PACKAGES += \
     android.hardware.boot@1.0-impl \
