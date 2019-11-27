@@ -17,6 +17,10 @@
 # Vendor blobs
 $(call inherit-product-if-exists, vendor/motorola/evert/evert-vendor.mk)
 
+#TWRP_PATH := device/motorola/evert-recovery
+
+#TARGET_PREBUILT_RECOVERY_RAMDISK := $(TWRP_PATH)/ramdisk-recovery.zip
+
 # Properties
 -include $(LOCAL_PATH)/vendor_prop.mk
 
