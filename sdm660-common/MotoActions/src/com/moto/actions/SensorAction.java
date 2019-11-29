@@ -18,5 +18,5 @@
 package com.moto.actions;
 
 public interface SensorAction {
-    void action();
+    public void action();
 }

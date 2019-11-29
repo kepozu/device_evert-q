@@ -30,6 +30,7 @@
             android:key="fp_haptic"
             android:defaultValue="0"
             android:title="@string/haptic_feedback"
+            android:icon="@drawable/ic_vibrate"
             android:summary="@string/haptic_feedback_summary" />
 
         <ListPreference
@@ -93,6 +94,7 @@
             android:dependency="fp_home_scr_off"
             android:defaultValue="0"
             android:title="@string/haptic_feedback"
+            android:icon="@drawable/ic_vibrate"
             android:summary="@string/haptic_feedback_summary" />
 
         <ListPreference

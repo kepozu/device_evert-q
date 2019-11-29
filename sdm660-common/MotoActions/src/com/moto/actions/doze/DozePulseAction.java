@@ -52,7 +52,7 @@ public class DozePulseAction implements SensorAction, ScreenStateNotifier {
         }
     }
 
-    private synchronized boolean mayDoze() {
+    public synchronized boolean mayDoze() {
         long now = System.currentTimeMillis();
         if (now - mLastDoze > DELAY_BETWEEN_DOZES_IN_MS) {
             Log.d(TAG, "Allowing doze");

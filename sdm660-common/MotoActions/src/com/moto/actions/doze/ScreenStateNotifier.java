@@ -18,6 +18,6 @@
 package com.moto.actions.doze;
 
 public interface ScreenStateNotifier {
-    void screenTurnedOn();
-    void screenTurnedOff();
+    public void screenTurnedOn();
+    public void screenTurnedOff();
 }

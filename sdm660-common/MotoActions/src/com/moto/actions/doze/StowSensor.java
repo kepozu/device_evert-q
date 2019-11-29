@@ -1,4 +1,5 @@
 /*
+ * Copyright (c) 2015 The CyanogenMod Project
  * Copyright (c) 2017 The LineageOS Project
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -17,16 +18,19 @@
 package com.moto.actions.doze;
 
 import android.hardware.Sensor;
-import android.hardware.TriggerEvent;
-import android.hardware.TriggerEventListener;
+import android.hardware.SensorEvent;
+import android.hardware.SensorEventListener;
 import android.util.Log;
+
+import java.lang.System;
 
 import com.moto.actions.MotoActionsSettings;
 import com.moto.actions.SensorAction;
 import com.moto.actions.SensorHelper;
 
-public class GlanceSensor implements ScreenStateNotifier {
-    private static final String TAG = "MotoActions-GlanceSensor";
+public class StowSensor implements ScreenStateNotifier, SensorEventListener {
+    private static final String TAG = "MotoActions-StowSensor";
+    private static final int IN_POCKET_MIN_TIME = 5000;
 
     private final MotoActionsSettings mMotoActionsSettings;
     private final SensorHelper mSensorHelper;
@@ -34,40 +38,54 @@ public class GlanceSensor implements ScreenStateNotifier {
     private final Sensor mSensor;
 
     private boolean mEnabled;
+    private boolean mLastStowed;
+    private long isStowedTime;
 
-    public GlanceSensor(MotoActionsSettings motoActionsSettings, SensorHelper sensorHelper,
+    public StowSensor(MotoActionsSettings motoActionsSettings, SensorHelper sensorHelper,
                 SensorAction action) {
         mMotoActionsSettings = motoActionsSettings;
         mSensorHelper = sensorHelper;
         mSensorAction = action;
 
-        mSensor = sensorHelper.getGlanceSensor();
+        mSensor = sensorHelper.getStowSensor();
     }
 
     @Override
     public void screenTurnedOn() {
         if (mEnabled) {
             Log.d(TAG, "Disabling");
-            mSensorHelper.cancelTriggerSensor(mSensor, mGlanceListener);
+            mSensorHelper.unregisterListener(this);
             mEnabled = false;
         }
     }
 
     @Override
     public void screenTurnedOff() {
-        if (mMotoActionsSettings.isPickUpEnabled() && !mEnabled) {
+        if (!mMotoActionsSettings.isIrWakeupEnabled() &&
+            mMotoActionsSettings.isPickUpEnabled() && !mEnabled) {
             Log.d(TAG, "Enabling");
-            mSensorHelper.requestTriggerSensor(mSensor, mGlanceListener);
+            mSensorHelper.registerListener(mSensor, this);
             mEnabled = true;
         }
     }
 
-    private TriggerEventListener mGlanceListener = new TriggerEventListener() {
-        @Override
-        public void onTrigger(TriggerEvent event) {
-            Log.d(TAG, "triggered");
-            mSensorAction.action();
-            mSensorHelper.requestTriggerSensor(mSensor, mGlanceListener);
+    @Override
+    public void onSensorChanged(SensorEvent event) {
+        boolean thisStowed = (event.values[0] != 0);
+        if(thisStowed){
+            isStowedTime = System.currentTimeMillis();
+        } else if (mLastStowed && !thisStowed) {
+            long inPocketTime = System.currentTimeMillis() - isStowedTime;
+            if(inPocketTime >= IN_POCKET_MIN_TIME){
+                Log.d(TAG, "Triggered after " + inPocketTime / 1000 + " seconds");
+                mSensorAction.action();
+            }
         }
-    };
+        mLastStowed = thisStowed;
+        Log.d(TAG, "event: " + thisStowed);
+    }
+
+    @Override
+    public void onAccuracyChanged(Sensor sensor, int accuracy) {
+    }
 }

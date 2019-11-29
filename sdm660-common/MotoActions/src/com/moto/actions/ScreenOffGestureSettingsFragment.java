@@ -1,6 +1,5 @@
 /*
- * Copyright (C) 2015-2016 The CyanogenMod Project
- * Copyright (C) 2017 The LineageOS Project
+ * Copyright (c) 2016 The CyanogenMod Project
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -18,9 +17,19 @@
 package com.moto.actions;
 
 import android.os.Bundle;
+import android.provider.Settings;
+import android.view.MenuItem;
+import androidx.preference.Preference;
+import androidx.preference.SwitchPreference;
 import androidx.preference.PreferenceFragment;
 
-public class ActionsPreferenceFragment extends PreferenceFragment {
+import static com.moto.actions.actions.Constants.KEY_GESTURE_ENABLE_HAPTIC_FEEDBACK;
+
+public class ScreenOffGestureSettingsFragment extends PreferenceFragment {
+
+    private SwitchPreference mTapToWake;
+    private SwitchPreference mHapticFeedback;
+
     @Override
     public void onActivityCreated(Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
@@ -29,6 +38,7 @@ public class ActionsPreferenceFragment extends PreferenceFragment {
 
     @Override
     public void onCreatePreferences(Bundle savedInstanceState, String rootKey) {
-        addPreferencesFromResource(R.xml.main_panel);
-    }
+        addPreferencesFromResource(R.xml.screen_off_gesture_panel);
+         }
+
 }

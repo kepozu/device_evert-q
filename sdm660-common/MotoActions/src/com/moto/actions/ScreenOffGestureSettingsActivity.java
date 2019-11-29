@@ -1,6 +1,5 @@
 /*
- * Copyright (C) 2015-2016 The CyanogenMod Project
- * Copyright (C) 2017 The LineageOS Project
+ * Copyright (c) 2016 The CyanogenMod Project
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -18,17 +17,16 @@
 package com.moto.actions;
 
 import android.os.Bundle;
-import androidx.preference.PreferenceFragment;
 
-public class ActionsPreferenceFragment extends PreferenceFragment {
-    @Override
-    public void onActivityCreated(Bundle savedInstanceState) {
-        super.onActivityCreated(savedInstanceState);
-        getActivity().getActionBar().setDisplayHomeAsUpEnabled(true);
-    }
+import android.preference.PreferenceActivity;
 
+public class ScreenOffGestureSettingsActivity extends PreferenceActivity {
     @Override
-    public void onCreatePreferences(Bundle savedInstanceState, String rootKey) {
-        addPreferencesFromResource(R.xml.main_panel);
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        if (savedInstanceState == null){
+            getFragmentManager().beginTransaction()
+                    .replace(android.R.id.content, new ScreenOffGestureSettingsFragment()).commit();
+        }
     }
 }
