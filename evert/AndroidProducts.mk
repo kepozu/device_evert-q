@@ -15,6 +15,6 @@
 #
 
 PRODUCT_MAKEFILES := \
-    $(LOCAL_DIR)/havoc_evert.mk \
+    $(LOCAL_DIR)/bootleg_evert.mk \
     $(LOCAL_DIR)/dex_evert.mk \
      $(LOCAL_DIR)/aosip_evert.mk \

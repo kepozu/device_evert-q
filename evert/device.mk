@@ -17,6 +17,10 @@
 # Vendor blobs
 $(call inherit-product-if-exists, vendor/motorola/evert/evert-vendor.mk)
 
+ifeq ($(WITH_SDK),true)
+$(call inherit-product, device/motorola/evert-lineage-sdk/lineage.mk)
+endif
+
 #TWRP_PATH := device/motorola/evert-recovery
 
 #TARGET_PREBUILT_RECOVERY_RAMDISK_IMG := $(TWRP_PATH)/ramdisk-recovery.img
