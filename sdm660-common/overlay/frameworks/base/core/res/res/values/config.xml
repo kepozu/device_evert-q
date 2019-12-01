@@ -492,7 +492,4 @@
         <item>/system/priv-app/MotoActions/MotoActions.apk</item>
     </string-array>
 
-    <string-array name="config_deviceKeyHandlerClasses" translatable="false">
-        <item>com.moto.actions.KeyHandler</item>
-    </string-array>
 </resources>

@@ -21,7 +21,10 @@ import android.os.Bundle;
 import android.content.Context;
 import android.content.SharedPreferences.Editor;
 import android.preference.PreferenceManager;
+import androidx.preference.PreferenceCategory;
+import androidx.preference.SwitchPreference;
 import android.hardware.fingerprint.FingerprintManager;
+import androidx.preference.PreferenceFragment;
 import android.view.MenuItem;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -29,9 +32,6 @@ import android.view.ViewGroup;
 import android.widget.CompoundButton;
 import android.widget.Switch;
 import android.widget.TextView;
-import androidx.preference.PreferenceCategory;
-import androidx.preference.SwitchPreference;
-import androidx.preference.PreferenceFragment;
 
 import com.moto.actions.actions.Constants;
 
@@ -46,14 +46,6 @@ public class FPGestureSettingsFragment extends PreferenceFragment {
 
     private TextView mSwitchBarText;
     private Switch mFPGestureSwitch;
-
-    @Override
-    public void onActivityCreated(Bundle savedInstanceState) {
-        super.onActivityCreated(savedInstanceState);
-        ActionBar actionbar = getActivity().getActionBar();
-        actionbar.setDisplayHomeAsUpEnabled(true);
-        actionbar.setTitle(R.string.fingerprint_gestures_title);
-    }
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
