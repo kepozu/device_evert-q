@@ -294,6 +294,12 @@ PRODUCT_COPY_FILES += \
     libvndfwk_detect_jni.qti \
     libvndfwk_detect_jni.qti.vendor
 
+PRODUCT_DEFAULT_PROPERTY_OVERRIDES += \
+    ro.vendor.qti.va_aosp.support=1
+
+PRODUCT_ODM_PROPERTIES += \
+    ro.vendor.qti.va_odm.support=1
+
 # OMX
 PRODUCT_PACKAGES += \
     libc2dcolorconvert \
