@@ -47,6 +47,7 @@ PRODUCT_PROPERTY_OVERRIDES += \
     vendor.voice.path.for.pcm.voip=true \
     vendor.audio.offload.min.duration.secs=60 \
     vendor.audio.spkr_prot.tx.sampling_rate=48000\
+    audio.volume.headset.gain.depcal=true
 
 # Enable headset calibration
 PRODUCT_PROPERTY_OVERRIDES += \
@@ -189,7 +190,6 @@ PRODUCT_PROPERTY_OVERRIDES += \
     ro.vendor.bluetooth.wipower=false \
     ro.bluetooth.a4wp=false \
     persist.vendor.bt.aac_frm_ctl.enabled=true \
-    ro.bluetooth.library_name=libbluetooth_qti.so
 
 # Camera
 PRODUCT_PROPERTY_OVERRIDES += \
