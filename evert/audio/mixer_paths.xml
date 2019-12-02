@@ -232,7 +232,7 @@
 	<ctl name="CLKSEL MUX" value="PDM" />
 	<ctl name="SPKDATL Input 1" value="DSP1.1" />
 	<ctl name="SPKDAT High Performance Switch" value="1" />
-	<ctl name="AMP PDM Gain" value="2" />
+	<ctl name="AMP PDM Gain" value="13" />
 	<ctl name="SPKDAT Digital Switch" id="0" value="1" />
 	<ctl name="SPKDAT Digital Switch" id="1" value="0" />
 
@@ -401,9 +401,9 @@
 		<path name="deep-buffer-playback bt-sco" />
 	</path>
 
-	<path name="deep-buffer-playback afe-proxy">
-		<ctl name="AFE_PCM_RX Audio Mixer MultiMedia1" value="1" />
-	</path>
+    <path name="deep-buffer-playback afe-proxy">
+        <ctl name="AFE_PCM_RX Audio Mixer MultiMedia1" value="1" />
+    </path>
 
 	<path name="deep-buffer-playback speaker-and-bt-sco">
 		<path name="deep-buffer-playback" />
@@ -442,9 +442,9 @@
 		<path name="low-latency-playback bt-sco" />
 	</path>
 
-	<path name="low-latency-playback afe-proxy">
-		<ctl name="AFE_PCM_RX Audio Mixer MultiMedia5" value="1" />
-	</path>
+    <path name="low-latency-playback afe-proxy">
+        <ctl name="AFE_PCM_RX Audio Mixer MultiMedia5" value="1" />
+    </path>
 
 	<path name="low-latency-playback hdmi">
 		<ctl name="QUIN_MI2S_RX Audio Mixer MultiMedia5" value="1" />
@@ -478,9 +478,9 @@
 		<path name="compress-offload-playback bt-sco" />
 	</path>
 
-	<path name="compress-offload-playback afe-proxy">
-		<ctl name="AFE_PCM_RX Audio Mixer MultiMedia4" value="1" />
-	</path>
+    <path name="compress-offload-playback afe-proxy">
+        <ctl name="AFE_PCM_RX Audio Mixer MultiMedia4" value="1" />
+    </path>
 
 	<path name="compress-offload-playback hdmi">
 		<ctl name="QUIN_MI2S_RX Audio Mixer MultiMedia4" value="1" />
@@ -536,30 +536,47 @@
 		<ctl name="SLIMBUS_0_RX Port Mixer PRI_MI2S_TX" value="1" />
 		<ctl name="SLIMBUS_DL_HL Switch" value="1" />
 	</path>
+    
+    <path name="play-fm speaker">
+        <ctl name="PRI MI2S LOOPBACK Volume" value="1" />
+        <ctl name="SLIMBUS_0_RX Port Mixer PRI_MI2S_TX" value="1" />
+        <ctl name="SLIMBUS_DL_HL Switch" value="1" />
+    </path>
+    
+    <path name="play-fm headphones">
+        <ctl name="PRI MI2S LOOPBACK Volume" value="1" />
+        <ctl name="SLIMBUS_0_RX Port Mixer PRI_MI2S_TX" value="1" />
+        <ctl name="SLIMBUS_DL_HL Switch" value="1" />
+    </path>
+    
+    <path name="play-fm bt-a2dp">
+        <ctl name="PRI MI2S LOOPBACK Volume" value="1" />
+        <path name="bt-a2dp" />
+    </path>
 
 	<path name="compress-voip-call">
 		<ctl name="SLIM_0_RX_Voice Mixer Voip" value="1" />
 		<ctl name="Voip_Tx Mixer SLIM_0_TX_Voip" value="1" />
 	</path>
-	
+
 	<path name="compress-voip-call bt-sco">
 		<ctl name="SLIM_7_RX_Voice Mixer Voip" value="1" />
 		<ctl name="Voip_Tx Mixer SLIM_7_TX_Voip" value="1" />
 	</path>
-	
+
 	<path name="compress-voip-call bt-sco-wb">
 		<ctl name="BT SampleRate" value="KHZ_16" />
 		<path name="compress-voip-call bt-sco" />
 	</path>
-	
+
 	<path name="compress-voip-call afe-proxy">
 		<ctl name="AFE_PCM_RX_Voice Mixer Voip" value="1" />
 		<ctl name="Voip_Tx Mixer AFE_PCM_TX_Voip" value="1" />
 	</path>
 
-	<path name="multi-channel-playback afe-proxy">
-		<ctl name="AFE_PCM_RX Audio Mixer MultiMedia2" value="1" />
-	</path>
+    <path name="multi-channel-playback afe-proxy">
+        <ctl name="AFE_PCM_RX Audio Mixer MultiMedia2" value="1" />
+    </path>
 
 	<path name="afe-proxy-playback afe-proxy">
 	</path>
@@ -658,9 +675,9 @@
 		<path name="incall-rec-uplink" />
 	</path>
 
-	<path name="incall-rec-uplink afe-proxy">
-		<path name="incall-rec-uplink" />
-	</path>
+    <path name="incall-rec-uplink afe-proxy">
+        <path name="incall-rec-uplink" />
+    </path>
 
 	<path name="incall-rec-downlink">
 		<ctl name="MultiMedia1 Mixer VOC_REC_DL" value="1" />
@@ -674,9 +691,9 @@
 		<path name="incall-rec-downlink" />
 	</path>
 
-	<path name="incall-rec-downlink afe-proxy">
-		<path name="incall-rec-downlink" />
-	</path>
+    <path name="incall-rec-downlink afe-proxy">
+        <path name="incall-rec-downlink" />
+    </path>
 
 	<path name="incall-rec-uplink-and-downlink">
 		<path name="incall-rec-uplink" />
@@ -691,9 +708,9 @@
 		<path name="incall-rec-uplink-and-downlink" />
 	</path>
 
-	<path name="incall-rec-uplink-and-downlink afe-proxy">
-		<path name="incall-rec-uplink-and-downlink" />
-	</path>
+    <path name="incall-rec-uplink-and-downlink afe-proxy">
+        <path name="incall-rec-uplink-and-downlink" />
+    </path>
 
 	<path name="incall-music-uplink">
 		<ctl name="Incall_Music Audio Mixer MultiMedia9" value="1" />
@@ -709,7 +726,7 @@
 	</path>
 
 	<path name="incall-music-uplink afe-proxy">
-		<path name="incall-music-uplink" />
+        	<path name="incall-music-uplink" />
 	</path>
 
 	<path name="incall-music-uplink headphones">
@@ -720,6 +737,10 @@
 		<path name="incall-music-uplink" />
 	</path>
 
+	<path name="incall_music_uplink2">
+		<ctl name="Incall_Music_2 Audio Mixer MultiMedia9" value="1" />
+	</path>
+
 	<path name="incall-music-uplink speaker-and-bt-sco">
 		<path name="incall-music-uplink" />
 	</path>
@@ -727,6 +748,10 @@
 	<path name="incall-music-uplink speaker-and-bt-sco-wb">
 		<path name="incall-music-uplink" />
 	</path>
+
+    <path name="incall_music_uplink2 afe-proxy">
+        <path name="incall_music_uplink2" />
+    </path>
 
 	<path name="hfp-sco">
 		<ctl name="HFP_PRI_AUX_UL_HL Switch" value="1" />
@@ -804,6 +829,7 @@
 
 	<path name="handset-mic">
 		<path name="mic1" />
+		<ctl name="IN1L Volume" value="12" />
 	</path>
 
 	<path name="headphones">
@@ -835,7 +861,6 @@
 
 	<path name="sidetone-handset">
 		<ctl name="Voice Sidetone Enable" value="1" />
-		<ctl name="SLIMBUS_0 LOOPBACK Volume" value="84" />
 	</path>
 
 	<path name="sidetone-hac-handset">
@@ -900,7 +925,6 @@
 		<ctl name="HPOUT1 Digital Volume" id="1" value="98" />
 		<ctl name="HPOUT1 Digital Switch" id="0" value="1" />
 		<ctl name="HPOUT1 Digital Switch" id="1" value="1" />
-		<ctl name="OSPL Rx" value="Disable" />
 	</path>
 
 	<path name="speaker-and-line">
@@ -920,7 +944,7 @@
 	</path>
 
 	<path name="camcorder-mic">
-		<path name="speaker-mic" />
+		<path name="handset-mic" />
 	</path>
 
 	<path name="bt-sco-headset">
@@ -963,6 +987,8 @@
 		<ctl name="SLIM_0_TX Channels" value="Two" />
 		<ctl name="SLIMTX1 Input 1" value="ISRC2DEC1" />
 		<ctl name="SLIMTX2 Input 1" value="ISRC2DEC4" />
+		<ctl name="IN1L Volume" value="12" />
+		<ctl name="IN2L Volume" value="12" />
 	</path>
 
 	<path name="dmic-endfire">
@@ -970,7 +996,7 @@
 	</path>
 
 	<path name="voice-speaker-dmic-ef">
-		<path name="mic1" />
+		<path name="speaker-dmic-endfire" />
 	</path>
 
 	<path name="voice-speaker-mic-hfp">
@@ -978,11 +1004,11 @@
 	</path>
 
 	<path name="voice-rec-dmic-ef">
-		<path name="voice-dmic-ef" />
+		<path name="dmic-endfire" />
 	</path>
 
 	<path name="voice-rec-dmic-ef-fluence">
-		<path name="voice-dmic-ef" />
+		<path name="dmic-endfire" />
 	</path>
 
 	<path name="camcorder-mic-bf">
