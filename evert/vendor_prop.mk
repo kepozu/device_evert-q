@@ -31,3 +31,8 @@ PRODUCT_PROPERTY_OVERRIDES += \
 # Display
 PRODUCT_PROPERTY_OVERRIDES += \
     ro.sf.lcd_density=420
+
+# Camera
+PRODUCT_PROPERTY_OVERRIDES += \
+    persist.vendor.camera.eis.enable=1 \
+    persist.vendor.camera.ois.disable=1
