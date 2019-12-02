@@ -24,6 +24,6 @@
     <integer name="def_screen_brightness">82</integer>
 
     <!-- 30 seconds for default screen timeout -->
-    <integer name="def_screen_off_timeout">30000</integer>
+    <integer name="def_screen_off_timeout">120000</integer>
 
 </resources>
