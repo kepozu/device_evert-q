@@ -16,8 +16,6 @@ PRODUCT_PROPERTY_OVERRIDES += \
     persist.vendor.audio.fluence.voicerec=false \
     persist.vendor.audio.hw.binder.size_kbyte=1024 \
     persist.vendor.audio.ras.enabled=false \
-    ro.config.vc_call_vol_steps=7 \
-    ro.config.media_vol_steps=25 \
     ro.vendor.audio.sdk.ssr=false \
     ro.vendor.audio.sdk.fluencetype=none \
     ro.qc.sdk.audio.fluencetype=none \
@@ -46,56 +44,7 @@ PRODUCT_PROPERTY_OVERRIDES += \
     vendor.fm.a2dp.conc.disabled=true \
     vendor.voice.path.for.pcm.voip=true \
     vendor.audio.offload.min.duration.secs=60 \
-    vendor.audio.spkr_prot.tx.sampling_rate=48000\
     audio.volume.headset.gain.depcal=true
-
-# Enable headset calibration
-PRODUCT_PROPERTY_OVERRIDES += \
-	vendor.audio.volume.headset.gain.depcal=true
-
-# Add dynamic feature flags here
-PRODUCT_PROPERTY_OVERRIDES += \
-	vendor.audio.feature.afe_proxy.enable=true \
-	vendor.audio.feature.anc_headset.enable=true \
-	vendor.audio.feature.battery_listener.enable=false \
-	vendor.audio.feature.compr_cap.enable=false \
-	vendor.audio.feature.compress_in.enable=false \
-	vendor.audio.feature.compress_meta_data.enable=true \
-	vendor.audio.feature.compr_voip.enable=true \
-	vendor.audio.feature.concurrent_capture.enable=false \
-	vendor.audio.feature.custom_stereo.enable=true \
-	vendor.audio.feature.display_port.enable=true \
-	vendor.audio.feature.dsm_feedback.enable=false \
-	vendor.audio.feature.dynamic_ecns.enable=false \
-	vendor.audio.feature.ext_hw_plugin.enable=false \
-	vendor.audio.feature.external_dsp.enable=false \
-	vendor.audio.feature.external_speaker.enable=false \
-	vendor.audio.feature.external_speaker_tfa.enable=false \
-	vendor.audio.feature.fluence.enable=true \
-	vendor.audio.feature.fm.enable=true \
-	vendor.audio.feature.hdmi_edid.enable=true \
-	vendor.audio.feature.hdmi_passthrough.enable=true \
-	vendor.audio.feature.hfp.enable=true \
-	vendor.audio.feature.hifi_audio.enable=true \
-	vendor.audio.feature.hwdep_cal.enable=false \
-	vendor.audio.feature.incall_music.enable=false \
-	vendor.audio.feature.multi_voice_session.enable=true \
-	vendor.audio.feature.keep_alive.enable=false \
-	vendor.audio.feature.kpi_optimize.enable=true \
-	vendor.audio.feature.maxx_audio.enable=false \
-	vendor.audio.feature.ras.enable=true \
-	vendor.audio.feature.record_play_concurency.enable=false \
-	vendor.audio.feature.src_trkn.enable=true \
-	vendor.audio.feature.spkr_prot.enable=true \
-	vendor.audio.feature.ssrec.enable=true \
-	vendor.audio.feature.usb_offload.enable=true \
-	vendor.audio.feature.usb_offload_burst_mode.enable=false \
-	vendor.audio.feature.usb_offload_sidetone_volume.enable=false \
-	vendor.audio.feature.deepbuffer_as_primary.enable=false \
-	vendor.audio.feature.vbat.enable=true \
-	vendor.audio.feature.wsa.enable=false \
-	vendor.audio.feature.audiozoom.enable=false \
-	vendor.audio.feature.snd_mon.enable=true
 
 #min/max cpu in core control
 PRODUCT_PROPERTY_OVERRIDES += \
@@ -183,13 +132,14 @@ PRODUCT_PROPERTY_OVERRIDES += \
 # Bluetooth
 PRODUCT_PROPERTY_OVERRIDES += \
     bt.max.hfpclient.connections=1 \
-    persist.vendor.qcom.bluetooth.a2dp_offload_cap=sbc-aptx-aptxhd-aac-ldac \
-    persist.vendor.qcom.bluetooth.enable.splita2dp=false \
+    persist.vendor.bt.a2dp_offload_cap=sbc-aptx-aptxhd-aac \
     vendor.qcom.bluetooth.soc=cherokee \
     vendor.bluetooth.soc=cherokee \
     ro.vendor.bluetooth.wipower=false \
     ro.bluetooth.a4wp=false \
-    persist.vendor.bt.aac_frm_ctl.enabled=true \
+    persist.bluetooth.a2dp_offload.disabled=false \
+    persist.bluetooth.a2dp_offload.cap=sbc-aac-aptx-aptxhd-ldac \
+    persist.bluetooth.bluetooth_audio_hal.disabled=true
 
 # Camera
 PRODUCT_PROPERTY_OVERRIDES += \
