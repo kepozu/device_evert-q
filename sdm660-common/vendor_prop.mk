@@ -370,6 +370,6 @@ PRODUCT_DEFAULT_PROPERTY_OVERRIDES += \
 PRODUCT_PROPERTY_OVERRIDES += \
         ro.storaged.event.interval=99999
 
-# NavBar
-PRODUCT_PROPERTY_OVERRIDES += \
+# Forze NavBar (use overlay 
+#PRODUCT_PROPERTY_OVERRIDES += \
     qemu.hw.mainkeys=0
