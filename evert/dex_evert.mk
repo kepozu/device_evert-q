@@ -27,6 +27,12 @@ $(call inherit-product, device/motorola/evert/device.mk)
 
 TARGET_GAPPS_ARCH := arm64
 
+export export DEX_BUILDTYPE=Official
+
+#device maintainer
+PRODUCT_PROPERTY_OVERRIDES += \
+ 	ro.dex.maintainer=-SɇƀȺ-_-3567-
+
 # A/B updater
 AB_OTA_UPDATER := true
 
