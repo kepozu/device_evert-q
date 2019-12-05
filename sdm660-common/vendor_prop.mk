@@ -64,13 +64,13 @@ persist.radio.calls.on.ims=1\
 persist.dbg.wfc_avail_ovr=1\
 
 # Rendering
-PRODUCT_PROPERTY_OVERRIDES += \
-    debug.enable.sglscale=1 \
-    debug.egl.hw=1 \
-    debug.sf.disable_hwc=0 \
-    debug.sf.recomputecrop=0 \
-    persist.hwc.ptor.enable=true \
-    debug.sf.gpu_comp_tiling=1
+#PRODUCT_PROPERTY_OVERRIDES += \
+#    debug.enable.sglscale=1 \
+#    debug.egl.hw=1 \
+#    debug.sf.disable_hwc=0 \
+#    debug.sf.recomputecrop=0 \
+#    persist.hwc.ptor.enable=true \
+#    debug.sf.gpu_comp_tiling=1
 
 #Increase cached app limit
 PRODUCT_PROPERTY_OVERRIDES += \
@@ -132,14 +132,14 @@ PRODUCT_PROPERTY_OVERRIDES += \
 # Bluetooth
 PRODUCT_PROPERTY_OVERRIDES += \
     bt.max.hfpclient.connections=1 \
-    persist.vendor.bt.a2dp_offload_cap=sbc-aptx-aptxhd-aac \
+    ro.bluetooth.a2dp_offload.supported=true \
+    persist.bluetooth.a2dp_offload.disabled=true \
+    persist.vendor.bt.a2dp_offload_cap=sbc-aptx-aptxhd-aac-ldac \
+    persist.vendor.qcom.bluetooth.enable.splita2dp=false \
     vendor.qcom.bluetooth.soc=cherokee \
     vendor.bluetooth.soc=cherokee \
     ro.vendor.bluetooth.wipower=false \
-    ro.bluetooth.a4wp=false \
-    persist.bluetooth.a2dp_offload.disabled=false \
-    persist.bluetooth.a2dp_offload.cap=sbc-aac-aptx-aptxhd-ldac \
-    persist.bluetooth.bluetooth_audio_hal.disabled=true
+    ro.bluetooth.a4wp=false
 
 # Camera
 PRODUCT_PROPERTY_OVERRIDES += \
