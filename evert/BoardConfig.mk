@@ -33,8 +33,8 @@ BOARD_HAS_QCA_FM_SOC := "cherokee"
 TARGET_KERNEL_CONFIG := evert_defconfig
 
 # Vendor init
-TARGET_INIT_VENDOR_LIB := //$(DEVICE_PATH):libinit_chef
-TARGET_RECOVERY_DEVICE_MODULES := libinit_chef
+TARGET_INIT_VENDOR_LIB := //$(DEVICE_PATH):libinit_evert
+TARGET_RECOVERY_DEVICE_MODULES := libinit_evert
 
 # HIDL
 #DEVICE_MANIFEST_FILE += $(DEVICE_PATH)/touch.xml
