@@ -829,7 +829,7 @@
 
 	<path name="handset-mic">
 		<path name="mic1" />
-		<ctl name="IN1L Volume" value="12" />
+		<ctl name="IN1L Volume" value="16" />
 	</path>
 
 	<path name="headphones">
@@ -907,6 +907,10 @@
 	</path>
 
 	<path name="voice-line">
+		<path name="voice-headphones" />
+	</path>
+
+	<path name="voice-headset">
 		<path name="voice-headphones" />
 	</path>
 
