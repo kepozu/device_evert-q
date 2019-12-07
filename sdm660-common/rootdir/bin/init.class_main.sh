@@ -41,7 +41,6 @@ case "$baseband" in
     stop ril-daemon
     stop vendor.ril-daemon
     stop vendor.qcrild
-    start vendor.ipacm
 esac
 
 case "$baseband" in
@@ -82,6 +81,8 @@ case "$baseband" in
         elif [ "$modem" = "TH" ]; then
             qcrild_status=false
         fi
+    else
+        qcrild_status=false
     fi
 
     if [ "$qcrild_status" = "true" ]; then
@@ -130,12 +131,10 @@ case "$baseband" in
     case "$datamode" in
         "tethered")
             start vendor.dataqti
-            start vendor.port-bridge
             start vendor.dataadpl
             ;;
         "concurrent")
             start vendor.dataqti
-            start vendor.port-bridge
             start vendor.dataadpl
             ;;
         *)

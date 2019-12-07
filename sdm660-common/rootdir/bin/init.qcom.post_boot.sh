@@ -424,8 +424,10 @@ function enable_swap() {
     fi
 }
 
-function configure_memory_parameters() {
-    # Set Memory parameters.
+# Motorola: We don't use this function.  Renaming it in case  QCOM
+#           adds a new call to it.
+function configure_memory_parameters_DO_NOT_CALL() {
+    # Set Memory paremeters.
     #
     # Set per_process_reclaim tuning parameters
     # All targets will use vmpressure range 50-70,
@@ -534,7 +536,7 @@ else
           *)
             #Set PPR parameters for all other targets.
             echo $set_almk_ppr_adj > /sys/module/process_reclaim/parameters/min_score_adj
-            echo 1 > /sys/module/process_reclaim/parameters/enable_process_reclaim
+            echo 0 > /sys/module/process_reclaim/parameters/enable_process_reclaim
             echo 50 > /sys/module/process_reclaim/parameters/pressure_min
             echo 70 > /sys/module/process_reclaim/parameters/pressure_max
             echo 30 > /sys/module/process_reclaim/parameters/swap_opt_eff
@@ -546,7 +548,7 @@ else
     # Set allocstall_threshold to 0 for all targets.
     # Set swappiness to 100 for all targets
     echo 0 > /sys/module/vmpressure/parameters/allocstall_threshold
-    echo 100 > /proc/sys/vm/swappiness
+    echo 60 > /proc/sys/vm/swappiness
 
     # Disable wsf for all targets beacause we are using efk.
     # wsf Range : 1..1000 So set to bare minimum value 1.
@@ -1725,6 +1727,13 @@ case "$target" in
                 # Enable timer migration to little cluster
                 echo 1 > /proc/sys/kernel/power_aware_timer_migration
 
+                case "$soc_id" in
+                        "277" | "278")
+                        # Start energy-awareness for 8976
+                        start energy-awareness
+                ;;
+                esac
+
                 #enable sched colocation and colocation inheritance
                 echo 130 > /proc/sys/kernel/sched_grp_upmigrate
                 echo 110 > /proc/sys/kernel/sched_grp_downmigrate
@@ -2291,7 +2300,8 @@ case "$target" in
                 # Enable timer migration to little cluster
                 echo 1 > /proc/sys/kernel/power_aware_timer_migration
                 # Set Memory parameters
-                configure_memory_parameters
+                #configure_memory_parameters
+
             ;;
             *)
 
@@ -2583,11 +2593,7 @@ case "$target" in
             # re-enable thermal and BCL hotplug
             echo 1 > /sys/module/msm_thermal/core_control/enabled
 
-            #Enable input boost configuration
-            echo "0:1401600" > /sys/module/cpu_boost/parameters/input_boost_freq
-            echo 60 > /sys/module/cpu_boost/parameters/input_boost_ms
-            echo "0:0 1:0 2:0 3:0 4:1747200 5:0 6:0 7:0" > /sys/module/cpu_boost/parameters/powerkey_input_boost_freq
-            echo 400 > /sys/module/cpu_boost/parameters/powerkey_input_boost_ms
+            echo 60 > /proc/sys/vm/swappiness
 
             # Set Memory parameters
             configure_memory_parameters
@@ -2657,11 +2663,12 @@ case "$target" in
             #init task load, restrict wakeups to preferred cluster
             echo 15 > /proc/sys/kernel/sched_init_task_load
             echo 1 > /proc/sys/kernel/sched_restrict_cluster_spill
-            echo 50000 > /proc/sys/kernel/sched_short_burst_ns
+            # Disable the small task package feature.
+            echo 0 > /proc/sys/kernel/sched_short_burst_ns
 
             # cpuset settings
-            echo 0-3 > /dev/cpuset/background/cpus
-            echo 0-3 > /dev/cpuset/system-background/cpus
+            #echo 0-3 > /dev/cpuset/background/cpus
+            #echo 0-3 > /dev/cpuset/system-background/cpus
 
             # disable thermal bcl hotplug to switch governor
             echo 0 > /sys/module/msm_thermal/core_control/enabled
@@ -2762,7 +2769,21 @@ case "$target" in
             done
 
             # Set Memory parameters
-            configure_memory_parameters
+            # configure_memory_parameters
+            # For memory size > 2G, enable the AMLK. This help to launch latency
+            arch_type=`uname -m`
+            MemTotalStr=`cat /proc/meminfo | grep MemTotal`
+            MemTotal=${MemTotalStr:16:8}
+            if [ "$arch_type" == "aarch64" ] && [ $MemTotal -gt 2097152 ]; then
+                adj_series=`cat /sys/module/lowmemorykiller/parameters/adj`
+                adj_1="${adj_series#*,}"
+                almk_ppr_adj="${adj_1%%,*}"
+                almk_ppr_adj=$(((almk_ppr_adj * 6) + 6))
+                echo 0 > /sys/module/lowmemorykiller/parameters/enable_adaptive_lmk
+                echo 80 > /sys/module/vmpressure/parameters/allocstall_threshold
+                echo $almk_ppr_adj > /sys/module/lowmemorykiller/parameters/adj_max_shift
+                echo 81250 > /sys/module/lowmemorykiller/parameters/vmpressure_file_min
+            fi
 
             # Enable bus-dcvs
             for cpubw in /sys/class/devfreq/*qcom,cpubw*
@@ -2796,6 +2817,8 @@ case "$target" in
             echo "cpufreq" > /sys/class/devfreq/soc:qcom,mincpubw/governor
             ;;
         esac
+	# Log kernel wake-up source
+	echo 1 > /sys/module/msm_show_resume_irq/parameters/debug_mask
     ;;
 esac
 
@@ -3413,7 +3436,7 @@ case "$target" in
 
     # colocation v3 settings
     echo 51 > /proc/sys/kernel/sched_min_task_util_for_boost
-    echo 35 > /proc/sys/kernel/sched_min_task_util_for_colocation
+    echo 51 > /proc/sys/kernel/sched_min_task_util_for_colocation
 
     # Enable conservative pl
     echo 1 > /proc/sys/kernel/sched_conservative_pl
@@ -3423,19 +3446,6 @@ case "$target" in
 
     # Set Memory parameters
     configure_memory_parameters
-
-    if [ `cat /sys/devices/soc0/revision` == "2.0" ]; then
-         # r2.0 related changes
-         echo "0:1075200" > /sys/devices/system/cpu/cpu_boost/input_boost_freq
-         echo 610000 > /sys/devices/system/cpu/cpufreq/policy0/schedutil/rtg_boost_freq
-         echo 1075200 > /sys/devices/system/cpu/cpufreq/policy0/schedutil/hispeed_freq
-         echo 1152000 > /sys/devices/system/cpu/cpufreq/policy6/schedutil/hispeed_freq
-         echo 1401600 > /sys/devices/system/cpu/cpufreq/policy7/schedutil/hispeed_freq
-         echo 614400 > /sys/devices/system/cpu/cpufreq/policy0/scaling_min_freq
-         echo 652800 > /sys/devices/system/cpu/cpufreq/policy6/scaling_min_freq
-         echo 806400 > /sys/devices/system/cpu/cpufreq/policy7/scaling_min_freq
-         echo 83 > /proc/sys/kernel/sched_asym_cap_sibling_freq_match_pct
-    fi
 
     # Enable bus-dcvs
     for device in /sys/devices/platform/soc
@@ -3640,7 +3650,7 @@ case "$target" in
             echo 1600 > $llccbw/bw_hwmon/idle_mbps
         done
 
-        for npubw in $device/*npu*-npu-ddr-bw/devfreq/*npu*-npu-ddr-bw
+        for npubw in $device/*npu-npu-ddr-bw/devfreq/*npu-npu-ddr-bw
         do
             echo 1 > /sys/devices/virtual/npu/msm_npu/pwr
             echo "bw_hwmon" > $npubw/governor
@@ -4696,7 +4706,7 @@ case "$target" in
 			echo "1720 2086 2929 3879 5931 6881 7980 10437" > $npubw/bw_hwmon/mbps_zones
 		fi
 		echo 4 > $npubw/bw_hwmon/sample_ms
-		echo 160 > $npubw/bw_hwmon/io_percent
+		echo 80 > $npubw/bw_hwmon/io_percent
 		echo 20 > $npubw/bw_hwmon/hist_memory
 		echo 10 > $npubw/bw_hwmon/hyst_length
 		echo 30 > $npubw/bw_hwmon/down_thres
@@ -4713,7 +4723,7 @@ case "$target" in
 		echo 40 > $npullccbw/polling_interval
 		echo "4577 7110 9155 12298 14236 15258" > $npullccbw/bw_hwmon/mbps_zones
 		echo 4 > $npullccbw/bw_hwmon/sample_ms
-		echo 160 > $npullccbw/bw_hwmon/io_percent
+		echo 100 > $npullccbw/bw_hwmon/io_percent
 		echo 20 > $npullccbw/bw_hwmon/hist_memory
 		echo 10 > $npullccbw/bw_hwmon/hyst_length
 		echo 30 > $npullccbw/bw_hwmon/down_thres
@@ -4761,14 +4771,6 @@ case "$target" in
 	    for l3prime in $device/*qcom,devfreq-l3/*cpu7-cpu-l3-lat/devfreq/*cpu7-cpu-l3-lat
 	    do
 		echo 20000 > $l3prime/mem_latency/ratio_ceil
-	    done
-
-	    #Enable mem_latency governor for qoslat
-	    for qoslat in $device/*qoslat/devfreq/*qoslat
-	    do
-		echo "mem_latency" > $qoslat/governor
-		echo 10 > $qoslat/polling_interval
-		echo 50 > $qoslat/mem_latency/ratio_ceil
 	    done
 	done
     echo N > /sys/module/lpm_levels/parameters/sleep_disabled
@@ -4924,9 +4926,12 @@ case "$target" in
 	echo N > /sys/module/lpm_levels/system/perf/perf-l2-ret/idle_enabled
 	echo N > /sys/module/lpm_levels/parameters/sleep_disabled
 
-        echo 0-3 > /dev/cpuset/background/cpus
-        echo 0-3 > /dev/cpuset/system-background/cpus
+        #echo 0-3 > /dev/cpuset/background/cpus
+        #echo 0-3 > /dev/cpuset/system-background/cpus
         echo 0 > /proc/sys/kernel/sched_boost
+
+	# Log kernel wake-up source
+	echo 1 > /sys/module/msm_show_resume_irq/parameters/debug_mask
 
         # Set Memory parameters
         configure_memory_parameters
@@ -5202,25 +5207,6 @@ case "$product" in
 	*)
        ;;
 esac
-
-case "$product" in
-	"sdmshrike_au")
-	#Setting the min supported frequencies
-		echo 1113600 > /sys/devices/system/cpu/cpu0/cpufreq/scaling_min_freq
-		echo 1113600 > /sys/devices/system/cpu/cpu1/cpufreq/scaling_min_freq
-		echo 1113600 > /sys/devices/system/cpu/cpu2/cpufreq/scaling_min_freq
-		echo 1113600 > /sys/devices/system/cpu/cpu3/cpufreq/scaling_min_freq
-		echo 1171200 > /sys/devices/system/cpu/cpu4/cpufreq/scaling_min_freq
-		echo 1171200 > /sys/devices/system/cpu/cpu5/cpufreq/scaling_min_freq
-		echo 1171200 > /sys/devices/system/cpu/cpu6/cpufreq/scaling_min_freq
-		echo 1171200 > /sys/devices/system/cpu/cpu7/cpufreq/scaling_min_freq
-                echo 4 > /sys/class/kgsl/kgsl-3d0/min_pwrlevel
-                echo 0 > /sys/class/kgsl/kgsl-3d0/max_pwrlevel
-	;;
-	*)
-	;;
-esac
-
 # Let kernel know our image version/variant/crm_version
 if [ -f /sys/devices/soc0/select_image ]; then
     image_version="10:"
